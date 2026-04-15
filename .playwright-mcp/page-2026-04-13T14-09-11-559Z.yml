@@ -1,0 +1,82 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - link "RAMEN DON" [ref=e4] [cursor=pointer]:
+      - /url: /
+    - button "Toggle navigation" [ref=e5] [cursor=pointer]:
+      - img [ref=e6]
+  - complementary [ref=e8]:
+    - generic [ref=e9]:
+      - link "RAMEN DON" [ref=e10] [cursor=pointer]:
+        - /url: /
+      - paragraph [ref=e11]: Admin
+    - navigation [ref=e12]:
+      - link "◈ Dashboard" [ref=e13] [cursor=pointer]:
+        - /url: /admin
+        - generic [ref=e14]: ◈
+        - text: Dashboard
+      - link "◷ Opening Hours" [ref=e15] [cursor=pointer]:
+        - /url: /admin/hours
+        - generic [ref=e16]: ◷
+        - text: Opening Hours
+      - link "◎ Venue Details" [ref=e17] [cursor=pointer]:
+        - /url: /admin/venue
+        - generic [ref=e18]: ◎
+        - text: Venue Details
+      - link "◻ Menu" [ref=e19] [cursor=pointer]:
+        - /url: /admin/menu
+        - generic [ref=e20]: ◻
+        - text: Menu
+      - link "◫ Gallery" [ref=e21] [cursor=pointer]:
+        - /url: /admin/gallery
+        - generic [ref=e22]: ◫
+        - text: Gallery
+      - link "◱ Homepage" [ref=e23] [cursor=pointer]:
+        - /url: /admin/homepage
+        - generic [ref=e24]: ◱
+        - text: Homepage
+    - button "⇥ Sign Out" [ref=e26]:
+      - generic [ref=e27]: ⇥
+      - text: Sign Out
+  - main [ref=e28]:
+    - generic [ref=e29]:
+      - heading "Menu Management" [level=1] [ref=e30]
+      - paragraph [ref=e31]: View and edit menu categories and items.
+      - generic [ref=e32]:
+        - button "Plates" [ref=e33]
+        - button "Bowls" [ref=e34]
+        - button "Soft Drinks" [ref=e35]
+        - button "Beers" [ref=e36]
+        - button "Cocktails" [ref=e37]
+        - button "Saké" [ref=e38]
+        - button "Wine" [ref=e39]
+      - generic [ref=e40]:
+        - generic [ref=e41]:
+          - heading "Plates Items (4)" [level=2] [ref=e42]
+          - link "View on site" [ref=e43] [cursor=pointer]:
+            - /url: /menu#cat-plates
+            - text: View on site
+            - img [ref=e44]
+        - generic [ref=e46]:
+          - generic [ref=e47]:
+            - generic [ref=e48]:
+              - paragraph [ref=e49]: Charred Edamame
+              - paragraph [ref=e50]: Shichimi togarashi, Sesame soy
+              - generic [ref=e52]: vg
+            - generic [ref=e54]: £6.00
+          - generic [ref=e55]:
+            - generic [ref=e56]:
+              - paragraph [ref=e57]: Karaage (5)
+              - paragraph [ref=e58]: Crispy fried chicken thigh, Spicy kewpie mayo, Fresh lemon
+            - generic [ref=e60]: £8.50
+          - generic [ref=e61]:
+            - generic [ref=e62]:
+              - paragraph [ref=e63]: Gyoza (5)
+              - paragraph [ref=e64]: Chicken & Vegetable / Pork / Tofu & Vegetable
+            - generic [ref=e66]: £8.00
+          - generic [ref=e67]:
+            - generic [ref=e68]:
+              - paragraph [ref=e69]: Katsu Bomb (4)
+              - paragraph [ref=e70]: Fried rice balls, Curry filling
+              - generic [ref=e72]: v
+            - generic [ref=e74]: £7.00
+      - paragraph [ref=e75]: Full CRUD editing (add/edit/delete items) requires Supabase to be configured.

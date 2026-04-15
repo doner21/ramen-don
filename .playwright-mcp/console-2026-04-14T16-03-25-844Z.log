@@ -1,0 +1,3 @@
+[    1754ms] [LOG] Supabase Studio is running commit 83e5ee8c5c2d1e203d16cb67778d6a1ac00c9c30 deployed at 2026-04-14 16:40:18 +01:00. @ https://frontend-assets.supabase.com/studio/83e5ee8c5c2d/_next/static/chunks/0.~~nbsntavs6.js?dpl=dpl_Lso6y15vUUnZtse1q24qg5zUqAj5:12
+[    2097ms] [WARNING] [Warning] Please install/enable Redux devtools extension @ https://frontend-assets.supabase.com/studio/83e5ee8c5c2d/_next/static/chunks/0.~~nbsntavs6.js?dpl=dpl_Lso6y15vUUnZtse1q24qg5zUqAj5:12
+[    9435ms] [ERROR] Failed to load resource: the server responded with a status of 429 () @ https://o398706.ingest.us.sentry.io/api/5459134/envelope/?sentry_version=7&sentry_key=caa7db5fc1da4341810a6d56251a951c&sentry_client=sentry.javascript.nextjs%2F10.27.0:0

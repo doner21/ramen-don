@@ -12,7 +12,7 @@ export default function GalleryGrid({ images }: GalleryGridProps) {
         <div key={img.id || img.filename || idx} className="break-inside-avoid relative overflow-hidden group">
           <div className="relative aspect-square lg:aspect-auto">
             <Image
-              src={img.local_path || img.storage_url || "/images/brand/hero_ramen.png"}
+              src={img.storage_url || img.local_path || "/images/brand/hero_ramen.png"}
               alt={img.alt_text}
               width={600}
               height={600}

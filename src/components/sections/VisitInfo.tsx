@@ -27,7 +27,15 @@ export default function VisitInfo() {
                 <span className="line-through opacity-50">Closed</span>
               </div>
               <div className="flex justify-between">
-                <span className="text-[#F0EBE3]">Tue–Fri</span>
+                <span className="text-[#F0EBE3]">Tuesday</span>
+                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
+              </div>
+              <div className="flex justify-between text-[#A09488]">
+                <span className="line-through opacity-50">Wednesday</span>
+                <span className="line-through opacity-50">Closed</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-[#F0EBE3]">Thu–Fri</span>
                 <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
               </div>
               <div className="flex justify-between">

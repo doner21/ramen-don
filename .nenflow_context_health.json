@@ -1,0 +1,10 @@
+{
+  "session_id": "e94814db-c68f-4afc-8fe1-1c27c4e6df80",
+  "tokens_estimated": 56000,
+  "context_max": 200000,
+  "saturation_pct": 28,
+  "health_band": "HEALTHY",
+  "threshold_65_hit": false,
+  "threshold_70_hit": false,
+  "measured_at": "2026-04-15T11:18:27.975Z"
+}

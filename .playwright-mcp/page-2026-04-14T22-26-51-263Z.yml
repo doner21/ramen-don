@@ -1,0 +1,117 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ramen Don" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Ramen Don" [ref=e8]
+      - button "Toggle navigation" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Come See Us
+      - heading "Visit Us" [level=1] [ref=e15]
+      - paragraph [ref=e16]: Unit 1A Regency Wharf 21, Birmingham
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Address" [level=2] [ref=e20]
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: Ramen Don
+          - paragraph [ref=e23]: Unit 1A Regency Wharf 21
+          - paragraph [ref=e24]: Birmingham, West Midlands
+          - paragraph [ref=e25]: B1 2DS
+          - paragraph [ref=e26]:
+            - link "0121 714 5565" [ref=e27] [cursor=pointer]:
+              - /url: tel:01217145565
+        - heading "Getting Here" [level=2] [ref=e28]
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: "By Train: New Street Station is a 10-minute walk via Broad Street."
+          - paragraph [ref=e31]: "By Bus: Multiple routes stop on Broad Street, 2 minutes away."
+          - paragraph [ref=e32]: "By Car: Brindleyplace car parks are a 5-minute walk. Limited street parking on Regency Wharf."
+          - paragraph [ref=e33]: "By Tram: Centenary Square stop is a 5-minute walk."
+      - generic [ref=e34]:
+        - heading "Opening Hours" [level=2] [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e38]: Monday
+            - generic [ref=e39]: Closed
+          - generic [ref=e40]:
+            - generic [ref=e41]: Tuesday
+            - generic [ref=e42]:
+              - paragraph [ref=e43]: "Lunch: 13:00:00–15:00:00"
+              - paragraph [ref=e44]: "Dinner: 17:15:00–22:00:00"
+          - generic [ref=e45]:
+            - generic [ref=e46]: Wednesday
+            - generic [ref=e47]: Closed
+          - generic [ref=e48]:
+            - generic [ref=e49]: Thursday
+            - generic [ref=e50]:
+              - paragraph [ref=e51]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e52]: "Dinner: 17:00:00–22:00:00"
+          - generic [ref=e53]:
+            - generic [ref=e54]: Friday
+            - generic [ref=e55]:
+              - paragraph [ref=e56]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e57]: "Dinner: 17:00:00–22:00:00"
+          - generic [ref=e58]:
+            - generic [ref=e59]: Saturday
+            - generic [ref=e60]:
+              - paragraph [ref=e61]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e62]: "Dinner: 17:00:00–23:00:00"
+          - generic [ref=e63]:
+            - generic [ref=e64]: Sunday
+            - generic [ref=e65]: All day until 20:00
+    - generic [ref=e66]:
+      - heading "Plan Your Visit" [level=2] [ref=e67]
+      - paragraph [ref=e68]: Book ahead to guarantee your table.
+      - link "Book a Table" [ref=e69] [cursor=pointer]:
+        - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+        - text: Book a Table
+        - img [ref=e70]
+  - contentinfo [ref=e72]:
+    - generic [ref=e73]:
+      - generic [ref=e74]:
+        - generic [ref=e75]:
+          - link "Ramen Don" [ref=e76] [cursor=pointer]:
+            - /url: /
+            - img "Ramen Don" [ref=e78]
+          - paragraph [ref=e79]:
+            - text: Handcrafted broths.
+            - text: Bold flavours.
+            - text: Birmingham.
+        - generic [ref=e80]:
+          - heading "Navigate" [level=3] [ref=e81]
+          - navigation [ref=e82]:
+            - link "Home" [ref=e83] [cursor=pointer]:
+              - /url: /
+            - link "Menu" [ref=e84] [cursor=pointer]:
+              - /url: /menu
+            - link "Visit" [ref=e85] [cursor=pointer]:
+              - /url: /visit
+            - link "Reservations" [ref=e86] [cursor=pointer]:
+              - /url: /reservations
+            - link "Gallery" [ref=e87] [cursor=pointer]:
+              - /url: /gallery
+            - link "Contact" [ref=e88] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e89]:
+          - heading "Find Us" [level=3] [ref=e90]
+          - generic [ref=e91]:
+            - paragraph [ref=e92]: Unit 1A Regency Wharf
+            - paragraph [ref=e93]: Birmingham, West Midlands
+            - paragraph [ref=e94]: B1 2DS
+            - paragraph [ref=e95]:
+              - link "0121 714 5565" [ref=e96] [cursor=pointer]:
+                - /url: tel:01217145565
+            - paragraph [ref=e97]:
+              - link "@ramen_don_" [ref=e98] [cursor=pointer]:
+                - /url: https://www.instagram.com/ramen_don_/
+        - generic [ref=e99]:
+          - heading "Opening Hours" [level=3] [ref=e100]
+          - generic [ref=e101]:
+            - paragraph [ref=e102]: Monday — Closed
+            - paragraph [ref=e103]: "Tue–Fri: 12:00–15:00, 17:00–22:00"
+            - paragraph [ref=e104]: "Sat: 12:00–15:00, 17:00–23:00"
+            - paragraph [ref=e105]: "Sun: 12:00–20:00"
+          - link "Book a Table" [ref=e106] [cursor=pointer]:
+            - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+      - generic [ref=e107]: © 2026 Ramen Don. All rights reserved.

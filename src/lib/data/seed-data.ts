@@ -37,11 +37,7 @@ export const OPENING_HOURS: OpeningHour[] = [
   {
     day_of_week: 2,
     day_name: "Wednesday",
-    is_closed: false,
-    lunch_open: "12:00",
-    lunch_close: "15:00",
-    dinner_open: "17:00",
-    dinner_close: "22:00",
+    is_closed: true,
   },
   {
     day_of_week: 3,

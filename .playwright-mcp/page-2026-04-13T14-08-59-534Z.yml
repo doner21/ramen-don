@@ -1,0 +1,299 @@
+- generic [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ramen Don" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Ramen Don" [ref=e8]
+      - button "Toggle navigation" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Discover
+      - heading "Our Menu" [level=1] [ref=e15]
+      - paragraph [ref=e16]: Handcrafted broths, bold flavours, and Japanese-inspired plates.
+    - navigation [ref=e17]:
+      - generic [ref=e19]:
+        - button "Plates" [ref=e20]
+        - button "Bowls" [ref=e21]
+        - button "Soft Drinks" [active] [ref=e22]
+        - button "Beers" [ref=e23]
+        - button "Cocktails" [ref=e24]
+        - button "Saké" [ref=e25]
+        - button "Wine" [ref=e26]
+    - generic [ref=e27]:
+      - generic [ref=e28]:
+        - heading "Plates" [level=2] [ref=e30]
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - generic [ref=e35]:
+                - heading "Charred Edamame" [level=3] [ref=e36]
+                - generic [ref=e37]: VG
+              - paragraph [ref=e38]: Shichimi togarashi, Sesame soy
+            - generic [ref=e39]: £6.00
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - heading "Karaage (5)" [level=3] [ref=e43]
+              - paragraph [ref=e44]: Crispy fried chicken thigh, Spicy kewpie mayo, Fresh lemon
+            - generic [ref=e45]: £8.50
+          - generic [ref=e46]:
+            - generic [ref=e47]:
+              - heading "Gyoza (5)" [level=3] [ref=e49]
+              - paragraph [ref=e50]: Chicken & Vegetable / Pork / Tofu & Vegetable
+            - generic [ref=e51]: £8.00
+          - generic [ref=e52]:
+            - generic [ref=e53]:
+              - generic [ref=e54]:
+                - heading "Katsu Bomb (4)" [level=3] [ref=e55]
+                - generic [ref=e56]: V
+              - paragraph [ref=e57]: Fried rice balls, Curry filling
+            - generic [ref=e58]: £7.00
+      - generic [ref=e59]:
+        - heading "Bowls" [level=2] [ref=e61]
+        - generic [ref=e63]:
+          - generic [ref=e64]:
+            - generic [ref=e65]:
+              - heading "Kotteri Pork" [level=3] [ref=e67]
+              - paragraph [ref=e68]: Pork bone broth, Chashu pork belly, House menma, Hanjuku egg, Spring onions, Beni Shoga, Nori
+            - generic [ref=e69]: £16.00
+          - generic [ref=e70]:
+            - generic [ref=e71]:
+              - heading "Chicken Paitan" [level=3] [ref=e73]
+              - paragraph [ref=e74]: Chicken with vegetable broth, Sweet soy chicken thigh, Hanjuku egg, Spring onion, House menma, Beni Shoga, Nori
+            - generic [ref=e75]: £16.00
+          - generic [ref=e76]:
+            - generic [ref=e77]:
+              - heading "Miso" [level=3] [ref=e79]
+              - paragraph [ref=e80]: Pork Bone broth or Chicken with vegetable broth, Chashu pork belly or Sweet soy chicken, Sweetcorn, Miso cabbage, Spring onion
+            - generic [ref=e81]: £16.00
+          - generic [ref=e82]:
+            - generic [ref=e83]:
+              - generic [ref=e84]:
+                - heading "Kara Miso" [level=3] [ref=e85]
+                - generic [ref=e86]: Spicy
+              - paragraph [ref=e87]: Pork Bone broth or Chicken with vegetable broth, Chashu pork belly or Sweet soy chicken, Spicy miso & toasted sesame tare, Kimchi, Sweetcorn, Spring onion, Shichimi togarashi
+            - generic [ref=e88]: £16.00
+          - generic [ref=e89]:
+            - generic [ref=e90]:
+              - heading "Chicken Katsu Curry" [level=3] [ref=e92]
+              - paragraph [ref=e93]: Panko chicken, Potatoes, Carrot, Rich curry sauce, Sticky Japanese rice, Spring onion, Beni Shoga
+            - generic [ref=e94]: £13.50
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - generic [ref=e97]:
+                - heading "Veg Curry" [level=3] [ref=e98]
+                - generic [ref=e99]: VG
+              - paragraph [ref=e100]: Sweet potato croquette, Tofu, Butternut Squash, Potatoes, Carrot, Rich curry sauce, Sticky Japanese rice, Spring onion, Beni Shoga
+            - generic [ref=e101]: £12.50
+          - generic [ref=e102]:
+            - generic [ref=e103]:
+              - generic [ref=e104]:
+                - heading "Kotteri Veg" [level=3] [ref=e105]
+                - generic [ref=e106]: VG
+              - paragraph [ref=e107]: Shio tare, Chilli oil, Soy milk, Kikurage, Sautéed cabbage, Menma, Spring onion, Sweetcorn, Beni shoga, Shichimi togarashi, Tofu, Hanjuku egg optional
+            - generic [ref=e108]: £15.00
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - generic [ref=e111]:
+                - heading "Veg Kara Miso" [level=3] [ref=e112]
+                - generic [ref=e113]: VG
+                - generic [ref=e114]: Spicy
+              - paragraph [ref=e115]: Soy sesame tare, Chilli oil, Soy milk, Kikurage, Sautéed cabbage, Menma, Spring onion, Sweetcorn, Beni shoga, Shichimi togarashi, Tofu, Hanjuku egg optional
+            - generic [ref=e116]: £15.00
+          - generic [ref=e117]:
+            - generic [ref=e118]:
+              - heading "Shoyu Ramen" [level=3] [ref=e120]
+              - paragraph [ref=e121]: Chicken with vegetable broth, Sweet soy chicken thigh, Hanjuku egg, Spring onion, Beni Shoga, Nori
+            - generic [ref=e122]: £16.00
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - heading "Kishu Ramen" [level=3] [ref=e126]
+              - paragraph [ref=e127]: Chicken with vegetable broth, Pink duck, House menma, Hanjuku egg, Spring onion, Nori
+            - generic [ref=e128]: £18.95
+      - generic [ref=e129]:
+        - heading "Soft Drinks" [level=2] [ref=e131]
+        - generic [ref=e133]:
+          - generic [ref=e134]:
+            - heading "Orange / Apple / Cranberry / Ginger Beer / Lemonade" [level=3] [ref=e137]
+            - generic [ref=e138]: £2.50
+          - generic [ref=e139]:
+            - heading "Coca-Cola / Diet Coke" [level=3] [ref=e142]
+            - generic [ref=e143]: £3.50
+          - generic [ref=e144]:
+            - heading "Still / Sparkling Water" [level=3] [ref=e147]
+            - generic [ref=e148]: £3.00
+      - generic [ref=e149]:
+        - heading "Beers" [level=2] [ref=e151]
+        - generic [ref=e153]:
+          - generic [ref=e154]:
+            - generic [ref=e155]:
+              - heading "Asahi 330ml Bottle" [level=3] [ref=e157]
+              - paragraph [ref=e158]: Abv 5.2%
+            - generic [ref=e159]: £4.50
+          - generic [ref=e160]:
+            - generic [ref=e161]:
+              - heading "Sapporo Pint Draft" [level=3] [ref=e163]
+              - paragraph [ref=e164]: 4.7%
+            - generic [ref=e165]: £6.50
+      - generic [ref=e166]:
+        - heading "Cocktails" [level=2] [ref=e168]
+        - generic [ref=e170]:
+          - generic [ref=e171]:
+            - generic [ref=e172]:
+              - heading "Moscow Mule" [level=3] [ref=e174]
+              - paragraph [ref=e175]: Vodka, Ginger beer, Lime
+            - generic [ref=e176]: £9.50
+          - generic [ref=e177]:
+            - generic [ref=e178]:
+              - heading "Izuku Midoriya Sour" [level=3] [ref=e180]
+              - paragraph [ref=e181]: Midori, Vodka, Yuzu, Gomme syrup
+            - generic [ref=e182]: £11.50
+          - generic [ref=e183]:
+            - generic [ref=e184]:
+              - heading "Smokey Bob" [level=3] [ref=e186]
+              - paragraph [ref=e187]: Rum bar overproof rum, Passion fruit, Coconut syrup, Yuzu, Ginger beer
+            - generic [ref=e188]: £12.50
+      - generic [ref=e189]:
+        - heading "Saké" [level=2] [ref=e191]
+        - generic [ref=e193]:
+          - generic [ref=e195]:
+            - generic [ref=e196]:
+              - heading "Yuzu Shu" [level=3] [ref=e197]
+              - generic [ref=e198]: 15%
+            - paragraph [ref=e199]: Yuzu, Citrus notes, Crisp
+            - generic [ref=e200]:
+              - generic [ref=e201]:
+                - text: 30ml
+                - generic [ref=e202]: £3.50
+              - generic [ref=e203]:
+                - text: 360ml
+                - generic [ref=e204]: £21.50
+              - generic [ref=e205]:
+                - text: 720ml
+                - generic [ref=e206]: £48.00
+          - generic [ref=e208]:
+            - generic [ref=e209]:
+              - heading "Ume Shu" [level=3] [ref=e210]
+              - generic [ref=e211]: 15%
+            - paragraph [ref=e212]: Plum, Sweet, Ripe
+            - generic [ref=e213]:
+              - generic [ref=e214]:
+                - text: 30ml
+                - generic [ref=e215]: £3.50
+              - generic [ref=e216]:
+                - text: 360ml
+                - generic [ref=e217]: £18.50
+              - generic [ref=e218]:
+                - text: 720ml
+                - generic [ref=e219]: £40.50
+          - generic [ref=e221]:
+            - generic [ref=e222]:
+              - heading "Kawatsuru Junmai Muroka" [level=3] [ref=e223]
+              - generic [ref=e224]: 16%
+            - paragraph [ref=e225]: Grape, Dark Plum, Creamy, Warm or Chilled
+            - generic [ref=e226]:
+              - generic [ref=e227]:
+                - text: 60ml
+                - generic [ref=e228]: £4.00
+              - generic [ref=e229]:
+                - text: 360ml
+                - generic [ref=e230]: £18.50
+              - generic [ref=e231]:
+                - text: 1.8L
+                - generic [ref=e232]: £98.00
+          - generic [ref=e234]:
+            - generic [ref=e235]:
+              - heading "Katsujama Ken" [level=3] [ref=e236]
+              - generic [ref=e237]: 15%
+            - paragraph [ref=e238]: Dry, Melon, White peach, Crisp
+            - generic [ref=e239]:
+              - generic [ref=e240]:
+                - text: 60ml
+                - generic [ref=e241]: £6.00
+              - generic [ref=e242]:
+                - text: 360ml
+                - generic [ref=e243]: £35.00
+              - generic [ref=e244]:
+                - text: 1.8L
+                - generic [ref=e245]: £75.00
+      - generic [ref=e246]:
+        - heading "Wine" [level=2] [ref=e248]
+        - generic [ref=e250]:
+          - generic [ref=e252]:
+            - heading "Montanes Malbec" [level=3] [ref=e254]
+            - paragraph [ref=e255]: Red, Argentina
+            - generic [ref=e256]:
+              - generic [ref=e257]:
+                - text: 175ml
+                - generic [ref=e258]: £5.00
+              - generic [ref=e259]:
+                - text: 250ml
+                - generic [ref=e260]: £6.60
+          - generic [ref=e262]:
+            - heading "Pinot Grigio Rosato" [level=3] [ref=e264]
+            - paragraph [ref=e265]: Rosé, Italy
+            - generic [ref=e266]:
+              - generic [ref=e267]:
+                - text: 175ml
+                - generic [ref=e268]: £5.30
+              - generic [ref=e269]:
+                - text: 250ml
+                - generic [ref=e270]: £6.90
+    - generic [ref=e271]:
+      - heading "Enjoyed the Menu?" [level=2] [ref=e272]
+      - paragraph [ref=e273]: Reserve your table and experience it in person.
+      - link "Book a Table" [ref=e274] [cursor=pointer]:
+        - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+        - text: Book a Table
+        - img [ref=e275]
+  - contentinfo [ref=e277]:
+    - generic [ref=e278]:
+      - generic [ref=e279]:
+        - generic [ref=e280]:
+          - link "Ramen Don" [ref=e281] [cursor=pointer]:
+            - /url: /
+            - img "Ramen Don" [ref=e283]
+          - paragraph [ref=e284]:
+            - text: Handcrafted broths.
+            - text: Bold flavours.
+            - text: Birmingham.
+        - generic [ref=e285]:
+          - heading "Navigate" [level=3] [ref=e286]
+          - navigation [ref=e287]:
+            - link "Home" [ref=e288] [cursor=pointer]:
+              - /url: /
+            - link "Menu" [ref=e289] [cursor=pointer]:
+              - /url: /menu
+            - link "Visit" [ref=e290] [cursor=pointer]:
+              - /url: /visit
+            - link "Reservations" [ref=e291] [cursor=pointer]:
+              - /url: /reservations
+            - link "Gallery" [ref=e292] [cursor=pointer]:
+              - /url: /gallery
+            - link "Contact" [ref=e293] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e294]:
+          - heading "Find Us" [level=3] [ref=e295]
+          - generic [ref=e296]:
+            - paragraph [ref=e297]: Unit 1A Regency Wharf
+            - paragraph [ref=e298]: Birmingham, West Midlands
+            - paragraph [ref=e299]: B1 2DS
+            - paragraph [ref=e300]:
+              - link "0121 714 5565" [ref=e301] [cursor=pointer]:
+                - /url: tel:01217145565
+            - paragraph [ref=e302]:
+              - link "@ramen_don_" [ref=e303] [cursor=pointer]:
+                - /url: https://www.instagram.com/ramen_don_/
+        - generic [ref=e304]:
+          - heading "Opening Hours" [level=3] [ref=e305]
+          - generic [ref=e306]:
+            - paragraph [ref=e307]: Monday — Closed
+            - paragraph [ref=e308]: "Tue–Fri: 12:00–15:00, 17:00–22:00"
+            - paragraph [ref=e309]: "Sat: 12:00–15:00, 17:00–23:00"
+            - paragraph [ref=e310]: "Sun: 12:00–20:00"
+          - link "Book a Table" [ref=e311] [cursor=pointer]:
+            - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+      - generic [ref=e312]: © 2026 Ramen Don. All rights reserved.
+  - button "Open Next.js Dev Tools" [ref=e318] [cursor=pointer]:
+    - img [ref=e319]
+  - alert [ref=e322]

@@ -1,0 +1,184 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - generic [ref=e3]:
+      - link "RAMEN DON" [ref=e4] [cursor=pointer]:
+        - /url: /
+      - button "Toggle navigation" [ref=e5] [cursor=pointer]:
+        - img [ref=e6]
+    - complementary [ref=e8]:
+      - generic [ref=e9]:
+        - link "RAMEN DON" [ref=e10] [cursor=pointer]:
+          - /url: /
+        - paragraph [ref=e11]: Admin
+      - navigation [ref=e12]:
+        - link "◈ Dashboard" [ref=e13] [cursor=pointer]:
+          - /url: /admin
+          - generic [ref=e14]: ◈
+          - text: Dashboard
+        - link "◷ Opening Hours" [ref=e15] [cursor=pointer]:
+          - /url: /admin/hours
+          - generic [ref=e16]: ◷
+          - text: Opening Hours
+        - link "◎ Venue Details" [ref=e17] [cursor=pointer]:
+          - /url: /admin/venue
+          - generic [ref=e18]: ◎
+          - text: Venue Details
+        - link "◻ Menu" [ref=e19] [cursor=pointer]:
+          - /url: /admin/menu
+          - generic [ref=e20]: ◻
+          - text: Menu
+        - link "◫ Gallery" [ref=e21] [cursor=pointer]:
+          - /url: /admin/gallery
+          - generic [ref=e22]: ◫
+          - text: Gallery
+        - link "◱ Homepage" [ref=e23] [cursor=pointer]:
+          - /url: /admin/homepage
+          - generic [ref=e24]: ◱
+          - text: Homepage
+      - button "⇥ Sign Out" [ref=e26]:
+        - generic [ref=e27]: ⇥
+        - text: Sign Out
+    - main [ref=e28]:
+      - generic [ref=e29]:
+        - generic [ref=e30]:
+          - generic [ref=e31]:
+            - heading "Opening Hours" [level=1] [ref=e32]
+            - paragraph [ref=e33]: Manage your restaurant's weekly trading schedule.
+          - generic [ref=e34]:
+            - generic [ref=e220]:
+              - img [ref=e221]
+              - text: Saved
+            - button "Save All Changes" [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e38]:
+            - generic [ref=e41]:
+              - heading "Monday" [level=3] [ref=e42]
+              - paragraph [ref=e43]: Closed all day
+            - generic [ref=e45] [cursor=pointer]:
+              - checkbox "Closed" [ref=e47]
+              - generic [ref=e50]: Closed
+          - generic [ref=e51]:
+            - generic [ref=e52]:
+              - generic [ref=e55]:
+                - heading "Tuesday" [level=3] [ref=e56]
+                - paragraph [ref=e57]: Open for service
+              - generic [ref=e58]:
+                - generic [ref=e59] [cursor=pointer]:
+                  - checkbox "Open" [checked] [ref=e61]
+                  - generic [ref=e64]: Open
+                - generic [ref=e65]:
+                  - generic [ref=e66]:
+                    - generic [ref=e67]: Lunch
+                    - generic [ref=e68]:
+                      - textbox [ref=e69]: 13:00:00
+                      - generic [ref=e70]: "-"
+                      - textbox [ref=e71]: 15:00:00
+                  - generic [ref=e72]:
+                    - generic [ref=e73]: Dinner
+                    - generic [ref=e74]:
+                      - textbox [ref=e75]: 17:15
+                      - generic [ref=e76]: "-"
+                      - textbox [ref=e77]: 22:00:00
+            - textbox "Add a special note (e.g. Bank Holiday hours, Kitchen closes early...)" [ref=e79]
+          - generic [ref=e81]:
+            - generic [ref=e84]:
+              - heading "Wednesday" [level=3] [ref=e85]
+              - paragraph [ref=e86]: Closed all day
+            - generic [ref=e88] [cursor=pointer]:
+              - checkbox "Closed" [ref=e90]
+              - generic [ref=e93]: Closed
+          - generic [ref=e94]:
+            - generic [ref=e95]:
+              - generic [ref=e98]:
+                - heading "Thursday" [level=3] [ref=e99]
+                - paragraph [ref=e100]: Open for service
+              - generic [ref=e101]:
+                - generic [ref=e102] [cursor=pointer]:
+                  - checkbox "Open" [checked] [ref=e104]
+                  - generic [ref=e107]: Open
+                - generic [ref=e108]:
+                  - generic [ref=e109]:
+                    - generic [ref=e110]: Lunch
+                    - generic [ref=e111]:
+                      - textbox [ref=e112]: 12:00:00
+                      - generic [ref=e113]: "-"
+                      - textbox [ref=e114]: 15:00:00
+                  - generic [ref=e115]:
+                    - generic [ref=e116]: Dinner
+                    - generic [ref=e117]:
+                      - textbox [ref=e118]: 17:00:00
+                      - generic [ref=e119]: "-"
+                      - textbox [ref=e120]: 22:00:00
+            - textbox "Add a special note (e.g. Bank Holiday hours, Kitchen closes early...)" [ref=e122]
+          - generic [ref=e123]:
+            - generic [ref=e124]:
+              - generic [ref=e127]:
+                - heading "Friday" [level=3] [ref=e128]
+                - paragraph [ref=e129]: Open for service
+              - generic [ref=e130]:
+                - generic [ref=e131] [cursor=pointer]:
+                  - checkbox "Open" [checked] [ref=e133]
+                  - generic [ref=e136]: Open
+                - generic [ref=e137]:
+                  - generic [ref=e138]:
+                    - generic [ref=e139]: Lunch
+                    - generic [ref=e140]:
+                      - textbox [ref=e141]: 12:00:00
+                      - generic [ref=e142]: "-"
+                      - textbox [ref=e143]: 15:00:00
+                  - generic [ref=e144]:
+                    - generic [ref=e145]: Dinner
+                    - generic [ref=e146]:
+                      - textbox [ref=e147]: 17:00:00
+                      - generic [ref=e148]: "-"
+                      - textbox [ref=e149]: 22:00:00
+            - textbox "Add a special note (e.g. Bank Holiday hours, Kitchen closes early...)" [ref=e151]
+          - generic [ref=e152]:
+            - generic [ref=e153]:
+              - generic [ref=e156]:
+                - heading "Saturday" [level=3] [ref=e157]
+                - paragraph [ref=e158]: Open for service
+              - generic [ref=e159]:
+                - generic [ref=e160] [cursor=pointer]:
+                  - checkbox "Open" [checked] [ref=e162]
+                  - generic [ref=e165]: Open
+                - generic [ref=e166]:
+                  - generic [ref=e167]:
+                    - generic [ref=e168]: Lunch
+                    - generic [ref=e169]:
+                      - textbox [ref=e170]: 12:00:00
+                      - generic [ref=e171]: "-"
+                      - textbox [ref=e172]: 15:00:00
+                  - generic [ref=e173]:
+                    - generic [ref=e174]: Dinner
+                    - generic [ref=e175]:
+                      - textbox [ref=e176]: 17:00:00
+                      - generic [ref=e177]: "-"
+                      - textbox [ref=e178]: 23:00:00
+            - textbox "Add a special note (e.g. Bank Holiday hours, Kitchen closes early...)" [ref=e180]
+          - generic [ref=e181]:
+            - generic [ref=e182]:
+              - generic [ref=e185]:
+                - heading "Sunday" [level=3] [ref=e186]
+                - paragraph [ref=e187]: Open for service
+              - generic [ref=e188]:
+                - generic [ref=e189] [cursor=pointer]:
+                  - checkbox "Open" [checked] [ref=e191]
+                  - generic [ref=e194]: Open
+                - generic [ref=e195]:
+                  - generic [ref=e196]:
+                    - generic [ref=e197]: Lunch
+                    - generic [ref=e198]:
+                      - textbox [ref=e199]: 12:00:00
+                      - generic [ref=e200]: "-"
+                      - textbox [ref=e201]: 20:00:00
+                  - generic [ref=e202]:
+                    - generic [ref=e203]: Dinner
+                    - generic [ref=e204]:
+                      - textbox [ref=e205]
+                      - generic [ref=e206]: "-"
+                      - textbox [ref=e207]
+            - textbox "Add a special note (e.g. Bank Holiday hours, Kitchen closes early...)" [ref=e209]: All day until 20:00
+  - button "Open Next.js Dev Tools" [ref=e215] [cursor=pointer]:
+    - img [ref=e216]
+  - alert [ref=e219]

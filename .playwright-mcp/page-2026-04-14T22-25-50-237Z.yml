@@ -1,0 +1,86 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ramen Don" [ref=e5] [cursor=pointer]:
+        - /url: /
+        - img "Ramen Don" [ref=e8]
+      - button "Toggle navigation" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Inside Ramen Don
+      - heading "The Restaurant" [level=1] [ref=e15]
+      - paragraph [ref=e16]: A glimpse into our world — from the kitchen to the table.
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - img "Atmospheric counter bar with warm amber lighting" [ref=e21]
+        - paragraph [ref=e23]: Atmospheric counter bar with warm amber lighting
+      - generic [ref=e24]:
+        - img "Chef hands crafting ramen in a dark kitchen with steam" [ref=e26]
+        - paragraph [ref=e28]: Chef hands crafting ramen in a dark kitchen with steam
+      - generic [ref=e29]:
+        - img "Overhead view of tonkotsu ramen in dark ceramic bowl" [ref=e31]
+        - paragraph [ref=e33]: Overhead view of tonkotsu ramen in dark ceramic bowl
+      - generic [ref=e34]:
+        - img "Spicy miso ramen with dramatic presentation" [ref=e36]
+        - paragraph [ref=e38]: Spicy miso ramen with dramatic presentation
+      - generic [ref=e39]:
+        - img "Overhead view of shoyu ramen with dark tones" [ref=e41]
+        - paragraph [ref=e43]: Overhead view of shoyu ramen with dark tones
+      - generic [ref=e44]:
+        - img "Premium truffle shio ramen in white ceramic bowl" [ref=e46]
+        - paragraph [ref=e48]: Premium truffle shio ramen in white ceramic bowl
+      - generic [ref=e49]:
+        - img "Candlelit atmospheric ramen restaurant interior" [ref=e51]
+        - paragraph [ref=e53]: Candlelit atmospheric ramen restaurant interior
+      - generic [ref=e54]:
+        - img "134198002426061751" [ref=e56]
+        - paragraph [ref=e58]: "134198002426061751"
+  - contentinfo [ref=e59]:
+    - generic [ref=e60]:
+      - generic [ref=e61]:
+        - generic [ref=e62]:
+          - link "Ramen Don" [ref=e63] [cursor=pointer]:
+            - /url: /
+            - img "Ramen Don" [ref=e65]
+          - paragraph [ref=e66]:
+            - text: Handcrafted broths.
+            - text: Bold flavours.
+            - text: Birmingham.
+        - generic [ref=e67]:
+          - heading "Navigate" [level=3] [ref=e68]
+          - navigation [ref=e69]:
+            - link "Home" [ref=e70] [cursor=pointer]:
+              - /url: /
+            - link "Menu" [ref=e71] [cursor=pointer]:
+              - /url: /menu
+            - link "Visit" [ref=e72] [cursor=pointer]:
+              - /url: /visit
+            - link "Reservations" [ref=e73] [cursor=pointer]:
+              - /url: /reservations
+            - link "Gallery" [ref=e74] [cursor=pointer]:
+              - /url: /gallery
+            - link "Contact" [ref=e75] [cursor=pointer]:
+              - /url: /contact
+        - generic [ref=e76]:
+          - heading "Find Us" [level=3] [ref=e77]
+          - generic [ref=e78]:
+            - paragraph [ref=e79]: Unit 1A Regency Wharf
+            - paragraph [ref=e80]: Birmingham, West Midlands
+            - paragraph [ref=e81]: B1 2DS
+            - paragraph [ref=e82]:
+              - link "0121 714 5565" [ref=e83] [cursor=pointer]:
+                - /url: tel:01217145565
+            - paragraph [ref=e84]:
+              - link "@ramen_don_" [ref=e85] [cursor=pointer]:
+                - /url: https://www.instagram.com/ramen_don_/
+        - generic [ref=e86]:
+          - heading "Opening Hours" [level=3] [ref=e87]
+          - generic [ref=e88]:
+            - paragraph [ref=e89]: Monday — Closed
+            - paragraph [ref=e90]: "Tue–Fri: 12:00–15:00, 17:00–22:00"
+            - paragraph [ref=e91]: "Sat: 12:00–15:00, 17:00–23:00"
+            - paragraph [ref=e92]: "Sun: 12:00–20:00"
+          - link "Book a Table" [ref=e93] [cursor=pointer]:
+            - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+      - generic [ref=e94]: © 2026 Ramen Don. All rights reserved.

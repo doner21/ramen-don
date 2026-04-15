@@ -70,9 +70,9 @@ export default function ContactPage() {
                 <span className="text-[#F0EBE3]">Tuesday</span>
                 <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
               </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229]">
-                <span className="text-[#F0EBE3]">Wednesday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
+              <div className="flex justify-between py-2 border-b border-[#3D3229] opacity-40">
+                <span className="text-[#F0EBE3] line-through">Wednesday</span>
+                <span className="text-[#A09488] line-through">Closed</span>
               </div>
               <div className="flex justify-between py-2 border-b border-[#3D3229]">
                 <span className="text-[#F0EBE3]">Thursday</span>

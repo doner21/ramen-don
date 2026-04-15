@@ -1,13 +1,10 @@
 import { NextResponse } from "next/server";
-import { isSupabaseConfigured, createSupabaseServiceClient } from "@/lib/supabase-server";
+import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import { VENUE_DETAILS } from "@/lib/data/seed-data";
 
 export async function GET() {
-  if (!isSupabaseConfigured()) {
-    return NextResponse.json({ data: VENUE_DETAILS });
-  }
   try {
-    const supabase = await createSupabaseServiceClient();
+    const supabase = createSupabaseAdminClient();
     const { data, error } = await supabase.from("venue_details").select("*").single();
     if (error) return NextResponse.json({ data: VENUE_DETAILS });
     return NextResponse.json({ data: data || VENUE_DETAILS });
@@ -17,12 +14,9 @@ export async function GET() {
 }
 
 export async function PATCH(request: Request) {
-  if (!isSupabaseConfigured()) {
-    return NextResponse.json({ success: false, message: "Supabase not configured" }, { status: 503 });
-  }
   try {
     const body = await request.json();
-    const supabase = await createSupabaseServiceClient();
+    const supabase = createSupabaseAdminClient();
     const { error } = await supabase.from("venue_details").upsert(body);
     if (error) return NextResponse.json({ success: false, message: error.message }, { status: 500 });
     return NextResponse.json({ success: true });
