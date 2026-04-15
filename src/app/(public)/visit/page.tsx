@@ -21,6 +21,9 @@ export default async function VisitPage() {
         <p className="mt-3 text-[#A09488] max-w-md mx-auto">
           {venue.address_line1}, {venue.city}
         </p>
+        {venue.tagline && (
+          <p className="mt-2 text-[#C8892A] text-sm font-medium tracking-widest uppercase">{venue.tagline}</p>
+        )}
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16">

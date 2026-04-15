@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import type { HomepageSection } from "@/lib/data/types";
 
 const FEATURED_BOWLS = [
   {
@@ -34,14 +35,18 @@ const FEATURED_BOWLS = [
   },
 ];
 
-export default function MenuHighlights() {
+interface MenuHighlightsProps {
+  section?: HomepageSection;
+}
+
+export default function MenuHighlights({ section }: MenuHighlightsProps = {}) {
   return (
     <section className="py-20 px-4 bg-[#1A1714]">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-14">
-          <p className="font-sans text-xs tracking-[0.4em] uppercase text-[#C8892A] mb-3">Our Kitchen</p>
+          <p className="font-sans text-xs tracking-[0.4em] uppercase text-[#C8892A] mb-3">{section?.subheading || "Our Kitchen"}</p>
           <h2 className="font-display text-4xl lg:text-5xl font-semibold text-[#F0EBE3]">
-            Signature Bowls
+            {section?.heading || "Signature Bowls"}
           </h2>
         </div>
 

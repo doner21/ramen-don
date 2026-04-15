@@ -20,15 +20,17 @@ export default async function HomePage() {
 
   const heroSection = sections.find((s) => s.slug === "hero");
   const storySection = sections.find((s) => s.slug === "story");
+  const ctaSection = sections.find((s) => s.slug === "visit-cta");
+  const signatureSection = sections.find((s) => s.slug === "signature-dishes");
 
   return (
     <>
       {heroSection && <Hero section={heroSection} heroImage={heroImage} />}
-      <MenuHighlights />
+      <MenuHighlights section={signatureSection} />
       <Story section={storySection} />
       <BookingCTA
-        heading="Book Your Table"
-        subtext="Reserve online in seconds — no deposit required."
+        heading={ctaSection?.heading || "Book Your Table"}
+        subtext={ctaSection?.subheading || "Reserve online in seconds — no deposit required."}
       />
       <VisitInfo hours={hours} />
 
