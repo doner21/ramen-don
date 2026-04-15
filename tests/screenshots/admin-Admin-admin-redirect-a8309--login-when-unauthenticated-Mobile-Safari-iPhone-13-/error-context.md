@@ -7,7 +7,7 @@
 # Test info
 
 - Name: admin.spec.ts >> Admin >> /admin redirects to /admin/login when unauthenticated
-- Location: tests\e2e\admin.spec.ts:4:7
+- Location: tests\e2e\admin.spec.ts:102:7
 
 # Error details
 
@@ -106,48 +106,142 @@ Call log:
 # Test source
 
 ```ts
-  1  | import { test, expect } from "@playwright/test";
-  2  | 
-  3  | test.describe("Admin", () => {
-  4  |   test("/admin redirects to /admin/login when unauthenticated", async ({ page }) => {
-  5  |     await page.goto("/admin");
-  6  |     // Should redirect to login (Supabase not configured in test env)
-> 7  |     await expect(page).toHaveURL(/\/admin\/login/);
-     |                        ^ Error: expect(page).toHaveURL(expected) failed
-  8  |     await page.screenshot({ path: "tests/screenshots/admin-login.png" });
-  9  |   });
-  10 | 
-  11 |   test("/admin/login renders login form", async ({ page }) => {
-  12 |     await page.goto("/admin/login");
-  13 |     await expect(page).toHaveURL(/\/admin\/login/);
-  14 | 
-  15 |     // Form elements present
-  16 |     const emailInput = page.locator('input[type="email"]');
-  17 |     await expect(emailInput).toBeVisible();
-  18 | 
-  19 |     const passwordInput = page.locator('input[type="password"]');
-  20 |     await expect(passwordInput).toBeVisible();
-  21 | 
-  22 |     const submitBtn = page.locator('button[type="submit"]');
-  23 |     await expect(submitBtn).toBeVisible();
-  24 |     await expect(submitBtn).toContainText(/Sign In/i);
-  25 | 
-  26 |     // Logotype visible
-  27 |     const logotype = page.locator("text=RAMEN DON").first();
-  28 |     await expect(logotype).toBeVisible();
-  29 |   });
-  30 | 
-  31 |   test("login form shows error on bad credentials", async ({ page }) => {
-  32 |     await page.goto("/admin/login");
-  33 | 
-  34 |     await page.fill('input[type="email"]', "test@example.com");
-  35 |     await page.fill('input[type="password"]', "wrongpassword");
-  36 |     await page.click('button[type="submit"]');
-  37 | 
-  38 |     // Should show error (Supabase configured or not)
-  39 |     // Either error message or still on login page
-  40 |     await expect(page).toHaveURL(/\/admin\/login/);
-  41 |   });
-  42 | });
-  43 | 
+  5   |     const consoleErrors: string[] = [];
+  6   |     page.on("console", (msg) => {
+  7   |       if (msg.type() === "error") consoleErrors.push(msg.text());
+  8   |     });
+  9   |     await page.goto("/");
+  10  |     await expect(page).toHaveURL("/");
+  11  |     // Page should have a heading or key text
+  12  |     await expect(page.locator("body")).toBeVisible();
+  13  |     // No JS console errors
+  14  |     expect(consoleErrors.filter((e) => !e.includes("favicon"))).toHaveLength(0);
+  15  |   });
+  16  | 
+  17  |   test("footer contains opening hours text", async ({ page }) => {
+  18  |     await page.goto("/");
+  19  |     // Footer should contain "Opening Hours" heading
+  20  |     await expect(page.locator("footer").getByText("Opening Hours")).toBeVisible();
+  21  |     // Footer should contain at least one day name
+  22  |     await expect(
+  23  |       page.locator("footer").getByText(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/i).first()
+  24  |     ).toBeVisible();
+  25  |   });
+  26  | 
+  27  |   test("/contact loads and contains opening hours", async ({ page }) => {
+  28  |     await page.goto("/contact");
+  29  |     await expect(page).toHaveURL("/contact");
+  30  |     await expect(page.getByRole("heading", { name: /Opening Hours/i })).toBeVisible();
+  31  |     // Should list day names
+  32  |     await expect(page.getByText(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/i).first()).toBeVisible();
+  33  |   });
+  34  | 
+  35  |   test("/visit loads and contains opening hours", async ({ page }) => {
+  36  |     await page.goto("/visit");
+  37  |     await expect(page).toHaveURL("/visit");
+  38  |     await expect(page.getByRole("heading", { name: /Opening Hours/i })).toBeVisible();
+  39  |     await expect(page.getByText(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/i).first()).toBeVisible();
+  40  |   });
+  41  | });
+  42  | 
+  43  | test.describe("Admin save-and-reflect", () => {
+  44  |   // TODO: requires authenticated session (SUPABASE_SERVICE_ROLE_KEY + test user credentials)
+  45  |   // These tests need a storageState with a logged-in admin session.
+  46  |   // To enable: add TEST_ADMIN_EMAIL and TEST_ADMIN_PASSWORD to .env.local,
+  47  |   // create a global setup that logs in and saves storageState, then re-enable these.
+  48  | 
+  49  |   test.skip("admin homepage: edit subheading → reflects on public homepage", async ({ page }) => {
+  50  |     // 1. Log in as admin
+  51  |     await page.goto("/admin/login");
+  52  |     await page.fill('input[type="email"]', process.env.TEST_ADMIN_EMAIL ?? "");
+  53  |     await page.fill('input[type="password"]', process.env.TEST_ADMIN_PASSWORD ?? "");
+  54  |     await page.click('button[type="submit"]');
+  55  |     await page.waitForURL(/\/admin(?!\/login)/);
+  56  | 
+  57  |     // 2. Navigate to homepage admin
+  58  |     await page.goto("/admin/homepage");
+  59  |     const heroSubheadingInput = page.locator('input[placeholder="Enter subheading..."]').first();
+  60  |     const testValue = `Test tagline ${Date.now()}`;
+  61  |     await heroSubheadingInput.fill(testValue);
+  62  |     await page.getByRole("button", { name: /Save All Changes/i }).click();
+  63  |     await expect(page.getByText("Saved")).toBeVisible();
+  64  | 
+  65  |     // 3. Verify on public homepage
+  66  |     await page.goto("/");
+  67  |     await expect(page.getByText(testValue)).toBeVisible();
+  68  |   });
+  69  | 
+  70  |   test.skip("admin hours: edit hours → reflects on /visit, /contact, and footer", async ({ page }) => {
+  71  |     // 1. Log in as admin
+  72  |     await page.goto("/admin/login");
+  73  |     await page.fill('input[type="email"]', process.env.TEST_ADMIN_EMAIL ?? "");
+  74  |     await page.fill('input[type="password"]', process.env.TEST_ADMIN_PASSWORD ?? "");
+  75  |     await page.click('button[type="submit"]');
+  76  |     await page.waitForURL(/\/admin(?!\/login)/);
+  77  | 
+  78  |     // 2. Navigate to hours admin
+  79  |     await page.goto("/admin/hours");
+  80  |     // Change Tuesday lunch open time (first time input after first "Open" toggle)
+  81  |     const tuesdayRow = page.locator('[data-testid="hour-row-tuesday"]').first();
+  82  |     const lunchOpenInput = tuesdayRow.locator('input[type="time"]').first();
+  83  |     await lunchOpenInput.fill("11:00");
+  84  |     await page.getByRole("button", { name: /Save All Changes/i }).click();
+  85  |     await expect(page.getByText("Saved")).toBeVisible();
+  86  | 
+  87  |     // 3. Verify on /visit
+  88  |     await page.goto("/visit");
+  89  |     await expect(page.getByText(/11:00/)).toBeVisible();
+  90  | 
+  91  |     // 4. Verify on /contact
+  92  |     await page.goto("/contact");
+  93  |     await expect(page.getByText(/11:00/)).toBeVisible();
+  94  | 
+  95  |     // 5. Verify in footer
+  96  |     await page.goto("/");
+  97  |     await expect(page.locator("footer").getByText(/11:00/)).toBeVisible();
+  98  |   });
+  99  | });
+  100 | 
+  101 | test.describe("Admin", () => {
+  102 |   test("/admin redirects to /admin/login when unauthenticated", async ({ page }) => {
+  103 |     await page.goto("/admin");
+  104 |     // Should redirect to login (Supabase not configured in test env)
+> 105 |     await expect(page).toHaveURL(/\/admin\/login/);
+      |                        ^ Error: expect(page).toHaveURL(expected) failed
+  106 |     await page.screenshot({ path: "tests/screenshots/admin-login.png" });
+  107 |   });
+  108 | 
+  109 |   test("/admin/login renders login form", async ({ page }) => {
+  110 |     await page.goto("/admin/login");
+  111 |     await expect(page).toHaveURL(/\/admin\/login/);
+  112 | 
+  113 |     // Form elements present
+  114 |     const emailInput = page.locator('input[type="email"]');
+  115 |     await expect(emailInput).toBeVisible();
+  116 | 
+  117 |     const passwordInput = page.locator('input[type="password"]');
+  118 |     await expect(passwordInput).toBeVisible();
+  119 | 
+  120 |     const submitBtn = page.locator('button[type="submit"]');
+  121 |     await expect(submitBtn).toBeVisible();
+  122 |     await expect(submitBtn).toContainText(/Sign In/i);
+  123 | 
+  124 |     // Logotype visible
+  125 |     const logotype = page.locator("text=RAMEN DON").first();
+  126 |     await expect(logotype).toBeVisible();
+  127 |   });
+  128 | 
+  129 |   test("login form shows error on bad credentials", async ({ page }) => {
+  130 |     await page.goto("/admin/login");
+  131 | 
+  132 |     await page.fill('input[type="email"]', "test@example.com");
+  133 |     await page.fill('input[type="password"]', "wrongpassword");
+  134 |     await page.click('button[type="submit"]');
+  135 | 
+  136 |     // Should show error (Supabase configured or not)
+  137 |     // Either error message or still on login page
+  138 |     await expect(page).toHaveURL(/\/admin\/login/);
+  139 |   });
+  140 | });
+  141 | 
 ```

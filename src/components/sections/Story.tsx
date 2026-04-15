@@ -1,6 +1,15 @@
 import Image from "next/image";
+import type { HomepageSection } from "@/lib/data/types";
 
-export default function Story() {
+interface StoryProps {
+  section?: HomepageSection;
+}
+
+export default function Story({ section }: StoryProps = {}) {
+  const headingLines = section?.heading
+    ? section.heading.split("\\n")
+    : ["The Craft", "of Ramen"];
+  const bodyText = section?.body ?? null;
   return (
     <section className="py-20 bg-[#2C231D]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -21,18 +30,26 @@ export default function Story() {
           <div className="lg:pl-8">
             <p className="font-sans text-xs tracking-[0.4em] uppercase text-[#C8892A] mb-4">Our Story</p>
             <h2 className="font-display text-4xl lg:text-5xl font-semibold text-[#F0EBE3] mb-6 leading-tight">
-              The Craft<br />of Ramen
+              {headingLines.map((line, i) => (
+                <span key={i}>{line}{i < headingLines.length - 1 && <br />}</span>
+              ))}
             </h2>
             <div className="space-y-4 text-[#A09488] leading-relaxed">
-              <p>
-                Every bowl at Ramen Don begins with a broth simmered for hours — rich, deep, and layered with umami. Our chefs blend traditional Japanese techniques with bold Birmingham spirit.
-              </p>
-              <p>
-                From the slow-rendered pork bone tonkotsu to the delicate yuzu-kissed shoyu, each recipe is a labour of love, crafted to warm the soul and awaken the senses.
-              </p>
-              <p>
-                We source the finest ingredients: hand-selected pork belly, free-range eggs marinated overnight, and nori from the Japanese coast. This is ramen done right.
-              </p>
+              {bodyText ? (
+                <p style={{ whiteSpace: "pre-line" }}>{bodyText}</p>
+              ) : (
+                <>
+                  <p>
+                    Every bowl at Ramen Don begins with a broth simmered for hours — rich, deep, and layered with umami. Our chefs blend traditional Japanese techniques with bold Birmingham spirit.
+                  </p>
+                  <p>
+                    From the slow-rendered pork bone tonkotsu to the delicate yuzu-kissed shoyu, each recipe is a labour of love, crafted to warm the soul and awaken the senses.
+                  </p>
+                  <p>
+                    We source the finest ingredients: hand-selected pork belly, free-range eggs marinated overnight, and nori from the Japanese coast. This is ramen done right.
+                  </p>
+                </>
+              )}
             </div>
             <div className="mt-8 pt-8 border-t border-[#3D3229]">
               <div className="grid grid-cols-3 gap-6 text-center">

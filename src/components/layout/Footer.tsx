@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getOpeningHours } from "@/lib/data/fetchers";
 
 const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
 const INSTAGRAM_URL = "https://www.instagram.com/ramen_don_/";
@@ -13,7 +14,8 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default function Footer() {
+export default async function Footer() {
+  const hours = await getOpeningHours();
   const year = new Date().getFullYear();
   return (
     <footer className="bg-[#2C231D] border-t border-[#3D3229]">
@@ -74,12 +76,22 @@ export default function Footer() {
           <div>
             <h3 className="font-display text-sm uppercase tracking-widest text-[#C8892A] mb-4">Opening Hours</h3>
             <div className="text-sm text-[#A09488] space-y-1">
-              <p className="line-through opacity-50">Monday — Closed</p>
-              <p>Tue: 12:00–15:00, 17:00–22:00</p>
-              <p className="line-through opacity-50">Wednesday — Closed</p>
-              <p>Thu–Fri: 12:00–15:00, 17:00–22:00</p>
-              <p>Sat: 12:00–15:00, 17:00–23:00</p>
-              <p>Sun: 12:00–20:00</p>
+              {hours.map((hour) => (
+                <p key={hour.day_of_week} className={hour.is_closed ? "line-through opacity-50" : undefined}>
+                  {hour.is_closed ? (
+                    `${hour.day_name} — Closed`
+                  ) : hour.note ? (
+                    `${hour.day_name}: ${hour.note}`
+                  ) : (
+                    <>
+                      {`${hour.day_name}: `}
+                      {hour.lunch_open && `${hour.lunch_open}–${hour.lunch_close}`}
+                      {hour.lunch_open && hour.dinner_open && ", "}
+                      {hour.dinner_open && `${hour.dinner_open}–${hour.dinner_close}`}
+                    </>
+                  )}
+                </p>
+              ))}
             </div>
             <a
               href={OPENTABLE_URL}

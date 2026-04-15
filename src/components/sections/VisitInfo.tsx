@@ -1,6 +1,12 @@
+import type { OpeningHour } from "@/lib/data/types";
+
 const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
 
-export default function VisitInfo() {
+interface VisitInfoProps {
+  hours?: OpeningHour[];
+}
+
+export default function VisitInfo({ hours }: VisitInfoProps = {}) {
   return (
     <section className="bg-[#1A1714] border-y border-[#3D3229] py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -20,32 +26,35 @@ export default function VisitInfo() {
 
           {/* Hours */}
           <div className="md:px-10">
-            <h3 className="font-display text-xs tracking-[0.3em] uppercase text-[#C8892A] mb-4">Opening Hours</h3>
-            <div className="text-sm space-y-1.5">
-              <div className="flex justify-between text-[#A09488]">
-                <span className="line-through opacity-50">Monday</span>
-                <span className="line-through opacity-50">Closed</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#F0EBE3]">Tuesday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
-              </div>
-              <div className="flex justify-between text-[#A09488]">
-                <span className="line-through opacity-50">Wednesday</span>
-                <span className="line-through opacity-50">Closed</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#F0EBE3]">Thu–Fri</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#F0EBE3]">Saturday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–23:00</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-[#F0EBE3]">Sunday</span>
-                <span className="text-[#A09488]">12:00–20:00</span>
-              </div>
+            <h3 className="font-display text-sm uppercase tracking-widest text-[#C8892A] mb-4">Opening Hours</h3>
+            <div className="text-sm text-[#A09488] space-y-1">
+              {hours && hours.length > 0 ? (
+                hours.map((hour) => (
+                  <p key={hour.day_of_week} className={hour.is_closed ? "line-through opacity-50" : undefined}>
+                    {hour.is_closed ? (
+                      `${hour.day_name} — Closed`
+                    ) : hour.note ? (
+                      `${hour.day_name}: ${hour.note}`
+                    ) : (
+                      <>
+                        {`${hour.day_name}: `}
+                        {hour.lunch_open && `${hour.lunch_open}–${hour.lunch_close}`}
+                        {hour.lunch_open && hour.dinner_open && ", "}
+                        {hour.dinner_open && `${hour.dinner_open}–${hour.dinner_close}`}
+                      </>
+                    )}
+                  </p>
+                ))
+              ) : (
+                <>
+                  <p className="line-through opacity-50">Monday — Closed</p>
+                  <p>Tuesday: 12:00–15:00, 17:00–22:00</p>
+                  <p className="line-through opacity-50">Wednesday — Closed</p>
+                  <p>Thu–Fri: 12:00–15:00, 17:00–22:00</p>
+                  <p>Saturday: 12:00–15:00, 17:00–23:00</p>
+                  <p>Sunday: 12:00–20:00</p>
+                </>
+              )}
             </div>
           </div>
 

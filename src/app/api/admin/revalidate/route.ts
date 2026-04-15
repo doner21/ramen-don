@@ -8,6 +8,8 @@ export async function POST() {
     revalidatePath("/menu", "page");
     revalidatePath("/gallery", "page");
     revalidatePath("/reservations", "page");
+    revalidatePath("/contact", "page");
+    revalidatePath("/visit", "page");
 
     // Admin pages
     revalidatePath("/admin/menu", "page");

@@ -46,6 +46,7 @@ export default function HomepageAdminPage() {
       });
       const json = await res.json();
       if (!json.success) throw new Error(json.message || "Save failed");
+      await fetch("/api/admin/revalidate", { method: "POST" });
       setSaved(true);
       setTimeout(() => setSaved(false), 3000);
     } catch (err: any) {

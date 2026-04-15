@@ -1,4 +1,5 @@
 import BookingCTA from "@/components/opentable/BookingCTA";
+import { getOpeningHours } from "@/lib/data/fetchers";
 
 const INSTAGRAM_URL = "https://www.instagram.com/ramen_don_/";
 
@@ -8,7 +9,8 @@ export const metadata = {
     "Get in touch with Ramen Don Birmingham. Address, phone, and opening hours.",
 };
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const hours = await getOpeningHours();
   return (
     <>
       {/* Header */}
@@ -62,34 +64,29 @@ export default function ContactPage() {
           <div>
             <h2 className="font-display text-2xl font-semibold text-[#F0EBE3] mb-6">Opening Hours</h2>
             <div className="space-y-2 text-sm">
-              <div className="flex justify-between py-2 border-b border-[#3D3229] opacity-40">
-                <span className="text-[#F0EBE3] line-through">Monday</span>
-                <span className="text-[#A09488] line-through">Closed</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229]">
-                <span className="text-[#F0EBE3]">Tuesday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229] opacity-40">
-                <span className="text-[#F0EBE3] line-through">Wednesday</span>
-                <span className="text-[#A09488] line-through">Closed</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229]">
-                <span className="text-[#F0EBE3]">Thursday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229]">
-                <span className="text-[#F0EBE3]">Friday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–22:00</span>
-              </div>
-              <div className="flex justify-between py-2 border-b border-[#3D3229]">
-                <span className="text-[#F0EBE3]">Saturday</span>
-                <span className="text-[#A09488]">12:00–15:00, 17:00–23:00</span>
-              </div>
-              <div className="flex justify-between py-2">
-                <span className="text-[#F0EBE3]">Sunday</span>
-                <span className="text-[#A09488]">12:00–20:00 (all day)</span>
-              </div>
+              {hours.map((hour, index) => (
+                <div
+                  key={hour.day_of_week}
+                  className={`flex justify-between py-2 border-b border-[#3D3229]${index === hours.length - 1 ? " border-b-0" : ""}${hour.is_closed ? " opacity-40" : ""}`}
+                >
+                  <span className={`text-[#F0EBE3]${hour.is_closed ? " line-through" : ""}`}>
+                    {hour.day_name}
+                  </span>
+                  <span className={`text-[#A09488]${hour.is_closed ? " line-through" : ""}`}>
+                    {hour.is_closed ? (
+                      "Closed"
+                    ) : hour.note ? (
+                      hour.note
+                    ) : (
+                      <>
+                        {hour.lunch_open && `${hour.lunch_open}–${hour.lunch_close}`}
+                        {hour.lunch_open && hour.dinner_open && ", "}
+                        {hour.dinner_open && `${hour.dinner_open}–${hour.dinner_close}`}
+                      </>
+                    )}
+                  </span>
+                </div>
+              ))}
             </div>
           </div>
         </div>

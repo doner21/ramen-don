@@ -6,21 +6,23 @@
 
 # Test info
 
-- Name: admin.spec.ts >> Admin >> /admin redirects to /admin/login when unauthenticated
-- Location: tests\e2e\admin.spec.ts:102:7
+- Name: admin.spec.ts >> Public pages — smoke tests >> /visit loads and contains opening hours
+- Location: tests\e2e\admin.spec.ts:35:7
 
 # Error details
 
 ```
-Error: expect(page).toHaveURL(expected) failed
+Error: expect(locator).toBeVisible() failed
 
-Expected pattern: /\/admin\/login/
-Received string:  "http://localhost:3000/admin"
-Timeout: 5000ms
+Locator: getByRole('heading', { name: /Opening Hours/i })
+Expected: visible
+Error: strict mode violation: getByRole('heading', { name: /Opening Hours/i }) resolved to 2 elements:
+    1) <h2 class="font-display text-2xl font-semibold text-[#F0EBE3] mb-6">Opening Hours</h2> aka getByRole('main').getByRole('heading', { name: 'Opening Hours' })
+    2) <h3 class="font-display text-sm uppercase tracking-widest text-[#C8892A] mb-4">Opening Hours</h3> aka getByRole('contentinfo').getByRole('heading', { name: 'Opening Hours' })
 
 Call log:
-  - Expect "toHaveURL" with timeout 5000ms
-    9 × unexpected value "http://localhost:3000/admin"
+  - Expect "toBeVisible" with timeout 5000ms
+  - waiting for getByRole('heading', { name: /Opening Hours/i })
 
 ```
 
@@ -28,79 +30,137 @@ Call log:
 
 ```yaml
 - generic [active] [ref=e1]:
-  - generic [ref=e2]:
-    - complementary [ref=e3]:
-      - generic [ref=e4]:
-        - link "RAMEN DON" [ref=e5] [cursor=pointer]:
-          - /url: /
-        - paragraph [ref=e6]: Admin
-      - navigation [ref=e7]:
-        - link "◈ Dashboard" [ref=e8] [cursor=pointer]:
-          - /url: /admin
-          - generic [ref=e9]: ◈
-          - text: Dashboard
-        - link "◷ Opening Hours" [ref=e10] [cursor=pointer]:
-          - /url: /admin/hours
-          - generic [ref=e11]: ◷
-          - text: Opening Hours
-        - link "◎ Venue Details" [ref=e12] [cursor=pointer]:
-          - /url: /admin/venue
-          - generic [ref=e13]: ◎
-          - text: Venue Details
-        - link "◻ Menu" [ref=e14] [cursor=pointer]:
-          - /url: /admin/menu
-          - generic [ref=e15]: ◻
-          - text: Menu
-        - link "◫ Gallery" [ref=e16] [cursor=pointer]:
-          - /url: /admin/gallery
-          - generic [ref=e17]: ◫
-          - text: Gallery
-        - link "◱ Homepage" [ref=e18] [cursor=pointer]:
-          - /url: /admin/homepage
-          - generic [ref=e19]: ◱
-          - text: Homepage
-      - button "⇥ Sign Out" [ref=e21]:
-        - generic [ref=e22]: ⇥
-        - text: Sign Out
-    - main [ref=e23]:
-      - generic [ref=e24]:
-        - heading "Dashboard" [level=1] [ref=e25]
-        - paragraph [ref=e26]: Welcome back. Manage your restaurant content below.
-        - generic [ref=e27]:
-          - link "Opening Hours Edit restaurant trading hours" [ref=e28] [cursor=pointer]:
-            - /url: /admin/hours
-            - heading "Opening Hours" [level=2] [ref=e29]
-            - paragraph [ref=e30]: Edit restaurant trading hours
-          - link "Venue Details Update address, phone, social links" [ref=e31] [cursor=pointer]:
-            - /url: /admin/venue
-            - heading "Venue Details" [level=2] [ref=e32]
-            - paragraph [ref=e33]: Update address, phone, social links
-          - link "Menu Manage categories, items, and prices" [ref=e34] [cursor=pointer]:
-            - /url: /admin/menu
-            - heading "Menu" [level=2] [ref=e35]
-            - paragraph [ref=e36]: Manage categories, items, and prices
-          - link "Gallery Upload and manage brand photos" [ref=e37] [cursor=pointer]:
-            - /url: /admin/gallery
-            - heading "Gallery" [level=2] [ref=e38]
-            - paragraph [ref=e39]: Upload and manage brand photos
-          - link "Homepage Edit hero, story, and section content" [ref=e40] [cursor=pointer]:
-            - /url: /admin/homepage
-            - heading "Homepage" [level=2] [ref=e41]
-            - paragraph [ref=e42]: Edit hero, story, and section content
-        - generic [ref=e43]:
-          - paragraph [ref=e44]: About this admin
-          - paragraph [ref=e45]: Changes made here update Supabase in real time. If Supabase is not configured, the site displays static fallback data from seed-data.ts.
-          - paragraph [ref=e46]:
-            - link "View live site →" [ref=e47] [cursor=pointer]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "Ramen Don" [ref=e5]:
+        - /url: /
+        - img "Ramen Don" [ref=e8]
+      - button "Toggle navigation" [ref=e9] [cursor=pointer]:
+        - img [ref=e10]
+  - main [ref=e12]:
+    - generic [ref=e13]:
+      - paragraph [ref=e14]: Come See Us
+      - heading "Visit Us" [level=1] [ref=e15]
+      - paragraph [ref=e16]: Unit 1A Regency Wharf 21, Birmingham
+    - generic [ref=e18]:
+      - generic [ref=e19]:
+        - heading "Address" [level=2] [ref=e20]
+        - generic [ref=e21]:
+          - paragraph [ref=e22]: Ramen Don
+          - paragraph [ref=e23]: Unit 1A Regency Wharf 21
+          - paragraph [ref=e24]: Birmingham, West Midlands
+          - paragraph [ref=e25]: B1 2DS
+          - paragraph [ref=e26]:
+            - link "0121 714 9999" [ref=e27]:
+              - /url: tel:01217149999
+        - heading "Getting Here" [level=2] [ref=e28]
+        - generic [ref=e29]:
+          - paragraph [ref=e30]: "By Train: New Street Station is a 10-minute walk via Broad Street."
+          - paragraph [ref=e31]: "By Bus: Multiple routes stop on Broad Street, 2 minutes away."
+          - paragraph [ref=e32]: "By Car: Brindleyplace car parks are a 5-minute walk. Limited street parking on Regency Wharf."
+          - paragraph [ref=e33]: "By Tram: Centenary Square stop is a 5-minute walk."
+      - generic [ref=e34]:
+        - heading "Opening Hours" [level=2] [ref=e35]
+        - generic [ref=e36]:
+          - generic [ref=e37]:
+            - generic [ref=e38]: Monday
+            - generic [ref=e39]: Closed
+          - generic [ref=e40]:
+            - generic [ref=e41]: Tuesday
+            - generic [ref=e42]:
+              - paragraph [ref=e43]: "Lunch: 13:00:00–15:00:00"
+              - paragraph [ref=e44]: "Dinner: 17:15:00–22:00:00"
+          - generic [ref=e45]:
+            - generic [ref=e46]: Wednesday
+            - generic [ref=e47]:
+              - paragraph [ref=e48]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e49]: "Dinner: 17:00:00–22:00:00"
+          - generic [ref=e50]:
+            - generic [ref=e51]: Thursday
+            - generic [ref=e52]:
+              - paragraph [ref=e53]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e54]: "Dinner: 17:00:00–22:00:00"
+          - generic [ref=e55]:
+            - generic [ref=e56]: Friday
+            - generic [ref=e57]:
+              - paragraph [ref=e58]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e59]: "Dinner: 17:00:00–22:00:00"
+          - generic [ref=e60]:
+            - generic [ref=e61]: Saturday
+            - generic [ref=e62]:
+              - paragraph [ref=e63]: "Lunch: 12:00:00–15:00:00"
+              - paragraph [ref=e64]: "Dinner: 17:00:00–23:00:00"
+          - generic [ref=e65]:
+            - generic [ref=e66]: Sunday
+            - generic [ref=e67]: All day until 20:00
+    - generic [ref=e68]:
+      - heading "Plan Your Visit" [level=2] [ref=e69]
+      - paragraph [ref=e70]: Book ahead to guarantee your table.
+      - link "Book a Table" [ref=e71]:
+        - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+        - text: Book a Table
+        - img [ref=e72]
+  - contentinfo [ref=e74]:
+    - generic [ref=e75]:
+      - generic [ref=e76]:
+        - generic [ref=e77]:
+          - link "Ramen Don":
+            - /url: /
+            - generic:
+              - img "Ramen Don"
+          - paragraph [ref=e78]:
+            - text: Handcrafted broths.
+            - text: Bold flavours.
+            - text: Birmingham.
+        - generic [ref=e79]:
+          - heading "Navigate" [level=3] [ref=e80]
+          - navigation [ref=e81]:
+            - link "Home" [ref=e82]:
               - /url: /
-  - button "Open Next.js Dev Tools" [ref=e53] [cursor=pointer]:
-    - img [ref=e54]
-  - alert [ref=e57]
+            - link "Menu" [ref=e83]:
+              - /url: /menu
+            - link "Visit" [ref=e84]:
+              - /url: /visit
+            - link "Reservations" [ref=e85]:
+              - /url: /reservations
+            - link "Gallery" [ref=e86]:
+              - /url: /gallery
+            - link "Contact" [ref=e87]:
+              - /url: /contact
+        - generic [ref=e88]:
+          - heading "Find Us" [level=3] [ref=e89]
+          - generic [ref=e90]:
+            - paragraph [ref=e91]: Unit 1A Regency Wharf
+            - paragraph [ref=e92]: Birmingham, West Midlands
+            - paragraph [ref=e93]: B1 2DS
+            - paragraph [ref=e94]:
+              - link "0121 714 5565" [ref=e95]:
+                - /url: tel:01217145565
+            - paragraph [ref=e96]:
+              - link "@ramen_don_" [ref=e97]:
+                - /url: https://www.instagram.com/ramen_don_/
+        - generic [ref=e98]:
+          - heading "Opening Hours" [level=3] [ref=e99]
+          - generic [ref=e100]:
+            - paragraph [ref=e101]: Monday — Closed
+            - paragraph [ref=e102]: "Tuesday: 13:00:00–15:00:00, 17:15:00–22:00:00"
+            - paragraph [ref=e103]: "Wednesday: 12:00:00–15:00:00, 17:00:00–22:00:00"
+            - paragraph [ref=e104]: "Thursday: 12:00:00–15:00:00, 17:00:00–22:00:00"
+            - paragraph [ref=e105]: "Friday: 12:00:00–15:00:00, 17:00:00–22:00:00"
+            - paragraph [ref=e106]: "Saturday: 12:00:00–15:00:00, 17:00:00–23:00:00"
+            - paragraph [ref=e107]: "Sunday: All day until 20:00"
+          - link "Book a Table" [ref=e108]:
+            - /url: https://www.opentable.co.uk/r/ramen-don-birmingham
+      - generic [ref=e109]: © 2026 Ramen Don. All rights reserved.
 ```
 
 # Test source
 
 ```ts
+  1   | import { test, expect } from "@playwright/test";
+  2   | 
+  3   | test.describe("Public pages — smoke tests", () => {
+  4   |   test("homepage (/) loads and contains expected text", async ({ page }) => {
   5   |     const consoleErrors: string[] = [];
   6   |     page.on("console", (msg) => {
   7   |       if (msg.type() === "error") consoleErrors.push(msg.text());
@@ -134,7 +194,8 @@ Call log:
   35  |   test("/visit loads and contains opening hours", async ({ page }) => {
   36  |     await page.goto("/visit");
   37  |     await expect(page).toHaveURL("/visit");
-  38  |     await expect(page.getByRole("heading", { name: /Opening Hours/i })).toBeVisible();
+> 38  |     await expect(page.getByRole("heading", { name: /Opening Hours/i })).toBeVisible();
+      |                                                                         ^ Error: expect(locator).toBeVisible() failed
   39  |     await expect(page.getByText(/Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday/i).first()).toBeVisible();
   40  |   });
   41  | });
@@ -201,8 +262,7 @@ Call log:
   102 |   test("/admin redirects to /admin/login when unauthenticated", async ({ page }) => {
   103 |     await page.goto("/admin");
   104 |     // Should redirect to login (Supabase not configured in test env)
-> 105 |     await expect(page).toHaveURL(/\/admin\/login/);
-      |                        ^ Error: expect(page).toHaveURL(expected) failed
+  105 |     await expect(page).toHaveURL(/\/admin\/login/);
   106 |     await page.screenshot({ path: "tests/screenshots/admin-login.png" });
   107 |   });
   108 | 
@@ -236,7 +296,4 @@ Call log:
   136 |     // Should show error (Supabase configured or not)
   137 |     // Either error message or still on login page
   138 |     await expect(page).toHaveURL(/\/admin\/login/);
-  139 |   });
-  140 | });
-  141 | 
 ```

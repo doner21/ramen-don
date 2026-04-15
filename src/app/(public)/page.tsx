@@ -3,6 +3,7 @@ import MenuHighlights from "@/components/sections/MenuHighlights";
 import Story from "@/components/sections/Story";
 import BookingCTA from "@/components/opentable/BookingCTA";
 import VisitInfo from "@/components/sections/VisitInfo";
+import { getHomepageSections, getOpeningHours } from "@/lib/data/fetchers";
 
 export const metadata = {
   title: "Ramen Don Birmingham — Authentic Japanese Ramen",
@@ -10,17 +11,25 @@ export const metadata = {
     "Handcrafted ramen broths and bold flavours in the heart of Birmingham. Visit Ramen Don at Regency Wharf and book your table today.",
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [sections, hours] = await Promise.all([
+    getHomepageSections(),
+    getOpeningHours(),
+  ]);
+
+  const heroSection = sections.find((s) => s.slug === "hero");
+  const storySection = sections.find((s) => s.slug === "story");
+
   return (
     <>
-      <Hero />
+      {heroSection && <Hero section={heroSection} />}
       <MenuHighlights />
-      <Story />
+      <Story section={storySection} />
       <BookingCTA
         heading="Book Your Table"
         subtext="Reserve online in seconds — no deposit required."
       />
-      <VisitInfo />
+      <VisitInfo hours={hours} />
 
       {/* Instagram teaser */}
       <section className="py-16 px-4 bg-[#2C231D] text-center">

@@ -1,8 +1,14 @@
 import Image from "next/image";
+import type { HomepageSection } from "@/lib/data/types";
 
 const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
 
-export default function Hero() {
+interface HeroProps {
+  section?: HomepageSection;
+}
+
+export default function Hero({ section }: HeroProps = {}) {
+  const tagline = section?.subheading ?? "Handcrafted broths. Bold flavours.";
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background image */}
@@ -37,7 +43,7 @@ export default function Hero() {
           </div>
         </h1>
         <p className="font-display text-xl sm:text-2xl italic text-[#A09488] mb-10">
-          Handcrafted broths. Bold flavours.
+          {tagline}
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
