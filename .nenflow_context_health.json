@@ -1,10 +1,10 @@
 {
-  "session_id": "e1280ddc-798a-4e74-b84d-2c8f5988fdc4",
-  "tokens_estimated": 106000,
+  "session_id": "bd21d928-28b6-490b-b12f-55c3574badc7",
+  "tokens_estimated": 50000,
   "context_max": 200000,
-  "saturation_pct": 53,
-  "health_band": "WARNING",
+  "saturation_pct": 25,
+  "health_band": "HEALTHY",
   "threshold_65_hit": false,
   "threshold_70_hit": false,
-  "measured_at": "2026-04-15T15:50:13.024Z"
+  "measured_at": "2026-04-15T17:40:34.219Z"
 }
