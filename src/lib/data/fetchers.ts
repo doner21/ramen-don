@@ -86,6 +86,23 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
   }
 }
 
+export async function getHeroImage(): Promise<GalleryImage | null> {
+  if (!isSupabaseConfigured()) return null;
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("gallery_images")
+      .select("*")
+      .eq("is_hero", true)
+      .limit(1)
+      .maybeSingle();
+    if (error || !data) return null;
+    return data as GalleryImage;
+  } catch {
+    return null;
+  }
+}
+
 export async function getHomepageSections(): Promise<HomepageSection[]> {
   if (!isSupabaseConfigured()) return HOMEPAGE_SECTIONS;
   try {

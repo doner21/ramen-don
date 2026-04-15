@@ -1,20 +1,24 @@
 import Image from "next/image";
 import type { HomepageSection } from "@/lib/data/types";
+import type { GalleryImage } from "@/lib/data/types";
 
 const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
 
 interface HeroProps {
   section?: HomepageSection;
+  heroImage?: GalleryImage | null;
 }
 
-export default function Hero({ section }: HeroProps = {}) {
+export default function Hero({ section, heroImage }: HeroProps = {}) {
   const tagline = section?.subheading ?? "Handcrafted broths. Bold flavours.";
+  const FALLBACK_IMAGE = "/images/brand/hero_ramen.png";
+  const heroSrc = heroImage?.storage_url || heroImage?.local_path || FALLBACK_IMAGE;
   return (
     <section className="relative h-screen min-h-[600px] flex items-center justify-center overflow-hidden">
       {/* Background image */}
       <Image
-        src="/images/brand/hero_ramen.png"
-        alt="Ramen Don atmospheric counter bar"
+        src={heroSrc}
+        alt={heroImage?.alt_text ?? "Ramen Don atmospheric counter bar"}
         fill
         className="object-cover"
         priority

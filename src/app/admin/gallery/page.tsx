@@ -87,17 +87,33 @@ export default function GalleryAdminPage() {
   };
 
   const toggleHero = async (image: GalleryImage) => {
+    const newValue = !image.is_hero;
     try {
+      if (newValue === true) {
+        const currentHeroes = images.filter(img => img.is_hero && img.id !== image.id);
+        await Promise.all(
+          currentHeroes.map(img =>
+            fetch("/api/admin/gallery", {
+              method: "PATCH",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ id: img.id, is_hero: false }),
+            })
+          )
+        );
+      }
       const res = await fetch("/api/admin/gallery", {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ id: image.id, is_hero: !image.is_hero }),
+        body: JSON.stringify({ id: image.id, is_hero: newValue }),
       });
       const json = await res.json();
       if (!res.ok) throw new Error(json.error || "Update failed");
-
       await revalidate();
-      setImages(images.map(img => img.id === image.id ? { ...img, is_hero: !img.is_hero } : img));
+      setImages(images.map(img => {
+        if (img.id === image.id) return { ...img, is_hero: newValue };
+        if (newValue === true) return { ...img, is_hero: false };
+        return img;
+      }));
     } catch (err: any) {
       alert("Error updating image: " + err.message);
     }
