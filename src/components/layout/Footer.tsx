@@ -1,9 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { getOpeningHours } from "@/lib/data/fetchers";
-
-const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
-const INSTAGRAM_URL = "https://www.instagram.com/ramen_don_/";
+import { getOpeningHours, getVenueDetails } from "@/lib/data/fetchers";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -16,6 +13,7 @@ const NAV_LINKS = [
 
 export default async function Footer() {
   const hours = await getOpeningHours();
+  const venue = await getVenueDetails();
   const year = new Date().getFullYear();
   return (
     <footer className="bg-[#2C231D] border-t border-[#3D3229]">
@@ -56,17 +54,17 @@ export default async function Footer() {
           <div>
             <h3 className="font-display text-sm uppercase tracking-widest text-[#C8892A] mb-4">Find Us</h3>
             <address className="not-italic text-sm text-[#A09488] space-y-1">
-              <p>Unit 1A Regency Wharf</p>
-              <p>Birmingham, West Midlands</p>
-              <p>B1 2DS</p>
+              <p>{venue.address_line1}</p>
+              <p>{venue.city}{venue.county ? `, ${venue.county}` : ""}</p>
+              <p>{venue.postcode}</p>
               <p className="mt-3">
-                <a href="tel:01217145565" className="hover:text-[#F0EBE3] transition-colors">
-                  0121 714 5565
+                <a href={`tel:${venue.phone.replace(/\s/g, "")}`} className="hover:text-[#F0EBE3] transition-colors">
+                  {venue.phone}
                 </a>
               </p>
               <p className="mt-2">
-                <a href={INSTAGRAM_URL} target="_blank" rel="noopener noreferrer" className="hover:text-[#C8892A] transition-colors">
-                  @ramen_don_
+                <a href={venue.instagram_url} target="_blank" rel="noopener noreferrer" className="hover:text-[#C8892A] transition-colors">
+                  {venue.instagram_url.replace(/https?:\/\/(www\.)?instagram\.com\//, "@").replace(/\/$/, "")}
                 </a>
               </p>
             </address>
@@ -94,7 +92,7 @@ export default async function Footer() {
               ))}
             </div>
             <a
-              href={OPENTABLE_URL}
+              href={venue.opentable_url}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-4 inline-block bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm px-5 py-2.5 hover:bg-[#d9992f] transition-colors"

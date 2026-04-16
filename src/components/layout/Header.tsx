@@ -13,9 +13,11 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
+interface HeaderProps {
+  openTableUrl?: string;
+}
 
-export default function Header() {
+export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham" }: HeaderProps = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -76,7 +78,7 @@ export default function Header() {
           {/* Desktop CTA */}
           <div className="hidden lg:flex">
             <a
-              href={OPENTABLE_URL}
+              href={openTableUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-2.5 hover:bg-[#d9992f] transition-colors"
@@ -118,7 +120,7 @@ export default function Header() {
               </Link>
             ))}
             <a
-              href={OPENTABLE_URL}
+              href={openTableUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="mt-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-3 text-center hover:bg-[#d9992f] transition-colors"

@@ -148,18 +148,16 @@ export default function HomepageAdminPage() {
                   </div>
                 )}
 
-                {section.body !== undefined && (
-                  <div className="md:col-span-2">
-                    <label className="block text-[10px] uppercase tracking-widest text-[#A09488] mb-1.5 font-bold">Body Content</label>
-                    <textarea
-                      rows={5}
-                      value={section.body || ""}
-                      onChange={(e) => updateSection(section.id!, "body", e.target.value)}
-                      className="w-full bg-[#1A1714] border border-[#3D3229] text-[#F0EBE3] px-4 py-3 text-sm focus:outline-none focus:border-[#C8892A] transition-colors resize-y leading-relaxed"
-                      placeholder="Write the section content here..."
-                    />
-                  </div>
-                )}
+                <div className="md:col-span-2">
+                  <label className="block text-[10px] uppercase tracking-widest text-[#A09488] mb-1.5 font-bold">Body Content</label>
+                  <textarea
+                    rows={5}
+                    value={section.body || ""}
+                    onChange={(e) => updateSection(section.id!, "body", e.target.value)}
+                    className="w-full bg-[#1A1714] border border-[#3D3229] text-[#F0EBE3] px-4 py-3 text-sm focus:outline-none focus:border-[#C8892A] transition-colors resize-y leading-relaxed"
+                    placeholder="Write the section content here..."
+                  />
+                </div>
 
                 {section.cta_text !== undefined && (
                   <div>

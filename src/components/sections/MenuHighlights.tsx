@@ -48,6 +48,14 @@ export default function MenuHighlights({ section }: MenuHighlightsProps = {}) {
           <h2 className="font-display text-4xl lg:text-5xl font-semibold text-[#F0EBE3]">
             {section?.heading || "Signature Bowls"}
           </h2>
+          {section?.body && (
+            <p
+              className="font-sans text-sm text-[#A09488] mt-4 max-w-xl mx-auto leading-relaxed"
+              data-testid="signature-dishes-body"
+            >
+              {section.body}
+            </p>
+          )}
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">

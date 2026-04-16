@@ -2,8 +2,6 @@ import Image from "next/image";
 import type { HomepageSection } from "@/lib/data/types";
 import type { GalleryImage } from "@/lib/data/types";
 
-const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
-
 interface HeroProps {
   section?: HomepageSection;
   heroImage?: GalleryImage | null;
@@ -46,12 +44,20 @@ export default function Hero({ section, heroImage }: HeroProps = {}) {
             />
           </div>
         </h1>
-        <p className="font-display text-xl sm:text-2xl italic text-[#A09488] mb-10">
+        <p className="font-display text-xl sm:text-2xl italic text-[#A09488] mb-6">
           {tagline}
         </p>
+        {section?.body && (
+          <p
+            className="font-sans text-sm text-[#A09488] mb-6 max-w-xl mx-auto leading-relaxed"
+            data-testid="hero-body"
+          >
+            {section.body}
+          </p>
+        )}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
           <a
-            href={OPENTABLE_URL}
+            href={section?.cta_url ?? "https://www.opentable.co.uk/r/ramen-don-birmingham"}
             target="_blank"
             rel="noopener noreferrer"
             className="bg-[#C8892A] text-[#1A1714] font-sans font-semibold px-8 py-3.5 hover:bg-[#d9992f] transition-colors tracking-wide"

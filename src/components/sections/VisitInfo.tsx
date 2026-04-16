@@ -1,12 +1,15 @@
-import type { OpeningHour } from "@/lib/data/types";
-
-const OPENTABLE_URL = "https://www.opentable.co.uk/r/ramen-don-birmingham";
+import type { OpeningHour, VenueDetails } from "@/lib/data/types";
 
 interface VisitInfoProps {
   hours?: OpeningHour[];
+  venue?: VenueDetails;
 }
 
-export default function VisitInfo({ hours }: VisitInfoProps = {}) {
+export default function VisitInfo({ hours, venue }: VisitInfoProps = {}) {
+  const openTableUrl = venue?.opentable_url ?? "https://www.opentable.co.uk/r/ramen-don-birmingham";
+  const addressLine1 = venue?.address_line1 ?? "Unit 1A Regency Wharf";
+  const phone = venue?.phone ?? "0121 714 5565";
+  const phoneHref = `tel:${phone.replace(/\s/g, "")}`;
   return (
     <section className="bg-[#1A1714] border-y border-[#3D3229] py-16 px-4">
       <div className="max-w-7xl mx-auto">
@@ -15,12 +18,12 @@ export default function VisitInfo({ hours }: VisitInfoProps = {}) {
           <div className="md:pr-10">
             <h3 className="font-display text-xs tracking-[0.3em] uppercase text-[#C8892A] mb-4">Find Us</h3>
             <address className="not-italic text-[#F0EBE3] space-y-1">
-              <p className="font-medium">Unit 1A Regency Wharf</p>
+              <p className="font-medium">{addressLine1}</p>
               <p className="text-[#A09488]">Birmingham, West Midlands</p>
               <p className="text-[#A09488]">B1 2DS</p>
             </address>
-            <a href="tel:01217145565" className="mt-3 block text-[#A09488] hover:text-[#C8892A] transition-colors">
-              0121 714 5565
+            <a href={phoneHref} className="mt-3 block text-[#A09488] hover:text-[#C8892A] transition-colors">
+              {phone}
             </a>
           </div>
 
@@ -65,7 +68,7 @@ export default function VisitInfo({ hours }: VisitInfoProps = {}) {
               Book your table online via OpenTable — no deposit required.
             </p>
             <a
-              href={OPENTABLE_URL}
+              href={openTableUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm px-6 py-3 hover:bg-[#d9992f] transition-colors self-start"

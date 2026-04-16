@@ -88,7 +88,7 @@ export default async function VisitPage() {
         </div>
       </div>
 
-      <BookingCTA heading="Plan Your Visit" subtext="Book ahead to guarantee your table." />
+      <BookingCTA heading="Plan Your Visit" subtext="Book ahead to guarantee your table." ctaUrl={venue.opentable_url} />
     </>
   );
 }

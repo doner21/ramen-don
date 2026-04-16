@@ -3,7 +3,7 @@ import MenuHighlights from "@/components/sections/MenuHighlights";
 import Story from "@/components/sections/Story";
 import BookingCTA from "@/components/opentable/BookingCTA";
 import VisitInfo from "@/components/sections/VisitInfo";
-import { getHomepageSections, getOpeningHours, getHeroImage } from "@/lib/data/fetchers";
+import { getHomepageSections, getOpeningHours, getHeroImage, getVenueDetails } from "@/lib/data/fetchers";
 
 export const metadata = {
   title: "Ramen Don Birmingham — Authentic Japanese Ramen",
@@ -12,10 +12,11 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [sections, hours, heroImage] = await Promise.all([
+  const [sections, hours, heroImage, venue] = await Promise.all([
     getHomepageSections(),
     getOpeningHours(),
     getHeroImage(),
+    getVenueDetails(),
   ]);
 
   const heroSection = sections.find((s) => s.slug === "hero");
@@ -31,8 +32,10 @@ export default async function HomePage() {
       <BookingCTA
         heading={ctaSection?.heading || "Book Your Table"}
         subtext={ctaSection?.subheading || "Reserve online in seconds — no deposit required."}
+        body={ctaSection?.body}
+        ctaUrl={ctaSection?.cta_url}
       />
-      <VisitInfo hours={hours} />
+      <VisitInfo hours={hours} venue={venue} />
 
       {/* Instagram teaser */}
       <section className="py-16 px-4 bg-[#2C231D] text-center">
