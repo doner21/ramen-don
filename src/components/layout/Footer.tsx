@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { getOpeningHours, getVenueDetails } from "@/lib/data/fetchers";
+import FooterBookingButton from "@/components/opentable/FooterBookingButton";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -91,14 +92,7 @@ export default async function Footer() {
                 </p>
               ))}
             </div>
-            <a
-              href={venue.opentable_url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-4 inline-block bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm px-5 py-2.5 hover:bg-[#d9992f] transition-colors"
-            >
-              Book a Table
-            </a>
+            <FooterBookingButton />
           </div>
         </div>
 

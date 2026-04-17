@@ -3,6 +3,11 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
+import BookingOverlay from "@/components/opentable/BookingOverlay";
+
+// Numeric RID confirmed via Playwright inspection on 2026-04-16
+const OPENTABLE_WIDGET_URL =
+  "https://www.opentable.co.uk/widget/reservation/loader?rid=325722&type=standard&theme=standard&color=1&dark=false&iframe=true&domain=co.uk&lang=en-GB&newtab=false&ot_source=Restaurant%20website";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
@@ -77,14 +82,14 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex">
-            <a
-              href={openTableUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-2.5 hover:bg-[#d9992f] transition-colors"
-            >
-              Book a Table
-            </a>
+            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+              <button
+                type="button"
+                className="bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-2.5 hover:bg-[#d9992f] transition-colors"
+              >
+                Book a Table
+              </button>
+            </BookingOverlay>
           </div>
 
           {/* Mobile hamburger */}
@@ -119,14 +124,15 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
                 {link.label}
               </Link>
             ))}
-            <a
-              href={openTableUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-3 text-center hover:bg-[#d9992f] transition-colors"
-            >
-              Book a Table
-            </a>
+            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+              <button
+                type="button"
+                className="mt-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-3 text-center hover:bg-[#d9992f] transition-colors w-full"
+                onClick={() => setMenuOpen(false)}
+              >
+                Book a Table
+              </button>
+            </BookingOverlay>
           </nav>
         </div>
       )}

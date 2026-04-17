@@ -1,3 +1,11 @@
+"use client";
+
+import BookingOverlay from "@/components/opentable/BookingOverlay";
+
+// Numeric RID confirmed via Playwright inspection on 2026-04-16
+const OPENTABLE_WIDGET_URL =
+  "https://www.opentable.co.uk/widget/reservation/loader?rid=325722&type=standard&theme=standard&color=1&dark=false&iframe=true&domain=co.uk&lang=en-GB&newtab=false&ot_source=Restaurant%20website";
+
 interface BookingCTAProps {
   heading?: string;
   subtext?: string;
@@ -11,7 +19,7 @@ export default function BookingCTA({
   subtext = "Reserve your table at Ramen Don Birmingham",
   body,
   className = "",
-  ctaUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham",
+  ctaUrl: _ctaUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham",
 }: BookingCTAProps) {
   return (
     <section className={`bg-[#2C231D] border-y border-[#3D3229] py-16 px-4 text-center ${className}`}>
@@ -27,18 +35,18 @@ export default function BookingCTA({
         </p>
       )}
       <p className="text-[#A09488] text-base mb-8 max-w-md mx-auto">{subtext}</p>
-      <a
-        href={ctaUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="inline-flex items-center gap-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold px-8 py-3 hover:bg-[#d9992f] transition-colors"
-        data-testid="booking-cta"
-      >
-        Book a Table
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-        </svg>
-      </a>
+      <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+        <button
+          type="button"
+          className="inline-flex items-center gap-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold px-8 py-3 hover:bg-[#d9992f] transition-colors"
+          data-testid="booking-cta"
+        >
+          Book a Table
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+          </svg>
+        </button>
+      </BookingOverlay>
     </section>
   );
 }
