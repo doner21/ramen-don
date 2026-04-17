@@ -6,8 +6,9 @@ import {
   MENU_ITEMS,
   GALLERY_IMAGES,
   HOMEPAGE_SECTIONS,
+  SIGNATURE_BOWLS,
 } from "./seed-data";
-import type { VenueDetails, OpeningHour, MenuCategory, GalleryImage, HomepageSection } from "./types";
+import type { VenueDetails, OpeningHour, MenuCategory, GalleryImage, HomepageSection, SignatureBowl } from "./types";
 
 export async function getVenueDetails(): Promise<VenueDetails> {
   if (!isSupabaseConfigured()) return VENUE_DETAILS;
@@ -100,6 +101,35 @@ export async function getHeroImage(): Promise<GalleryImage | null> {
     return data as GalleryImage;
   } catch {
     return null;
+  }
+}
+
+export async function getSignatureBowls(): Promise<SignatureBowl[]> {
+  if (!isSupabaseConfigured()) return SIGNATURE_BOWLS;
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data, error } = await supabase
+      .from("signature_bowls")
+      .select("*, gallery_images(storage_url, local_path, alt_text)")
+      .eq("is_visible", true)
+      .order("sort_order");
+    if (error || !data || data.length === 0) return SIGNATURE_BOWLS;
+    return data.map((row: any) => ({
+      id: row.id,
+      name: row.name,
+      description: row.description,
+      price: row.price,
+      badge_label: row.badge_label,
+      gallery_image_id: row.gallery_image_id,
+      alt_text: row.alt_text,
+      sort_order: row.sort_order,
+      is_visible: row.is_visible,
+      image_url: row.gallery_images?.storage_url ?? null,
+      image_local_path: row.gallery_images?.local_path ?? null,
+      image_alt_text: row.gallery_images?.alt_text ?? null,
+    }));
+  } catch {
+    return SIGNATURE_BOWLS;
   }
 }
 

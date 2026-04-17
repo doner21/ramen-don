@@ -79,3 +79,19 @@ export interface SiteSetting {
   key: string;
   value: string;
 }
+
+export interface SignatureBowl {
+  id?: string;
+  name: string;
+  description: string;
+  price?: string | null;
+  badge_label?: string | null;
+  gallery_image_id?: string | null;
+  alt_text?: string | null;
+  sort_order?: number;
+  is_visible?: boolean;
+  // resolved from join (not stored in DB):
+  image_url?: string | null;
+  image_local_path?: string | null;
+  image_alt_text?: string | null;
+}

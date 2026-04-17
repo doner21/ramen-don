@@ -17,6 +17,7 @@ export async function POST() {
     revalidatePath("/admin/hours", "page");
     revalidatePath("/admin/venue", "page");
     revalidatePath("/admin/homepage", "page");
+    revalidatePath("/admin/signature-bowls", "page");
 
     return NextResponse.json({
       revalidated: true,

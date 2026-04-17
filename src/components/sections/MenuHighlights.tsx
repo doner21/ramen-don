@@ -1,45 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import type { HomepageSection } from "@/lib/data/types";
-
-const FEATURED_BOWLS = [
-  {
-    name: "Kotteri Pork",
-    description: "Pork bone broth, Chashu pork belly, House menma, Hanjuku egg",
-    price: "£16",
-    image: "/images/brand/signature_bowl.png",
-    alt: "Kotteri pork ramen in dark ceramic bowl",
-  },
-  {
-    name: "Kara Miso",
-    description: "Spicy miso tare, Kimchi, Sweetcorn, Shichimi togarashi",
-    price: "£16",
-    image: "/images/brand/spicy_fire.png",
-    alt: "Spicy kara miso ramen",
-    tag: "🌶 Spicy",
-  },
-  {
-    name: "Shoyu Ramen",
-    description: "Sweet soy chicken, Hanjuku egg, Spring onion, Nori",
-    price: "£16",
-    image: "/images/brand/shoyu_essence.png",
-    alt: "Shoyu ramen overhead",
-  },
-  {
-    name: "Kishu Ramen",
-    description: "Pink duck, House menma, Hanjuku egg, Spring onion",
-    price: "£18.95",
-    image: "/images/brand/truffle_shio.png",
-    alt: "Premium Kishu ramen",
-    tag: "Chef's Pick",
-  },
-];
+import type { HomepageSection, SignatureBowl } from "@/lib/data/types";
 
 interface MenuHighlightsProps {
   section?: HomepageSection;
+  bowls: SignatureBowl[];
 }
 
-export default function MenuHighlights({ section }: MenuHighlightsProps = {}) {
+export default function MenuHighlights({ section, bowls }: MenuHighlightsProps) {
   return (
     <section className="py-20 px-4 bg-[#1A1714]">
       <div className="max-w-7xl mx-auto">
@@ -59,26 +27,28 @@ export default function MenuHighlights({ section }: MenuHighlightsProps = {}) {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {FEATURED_BOWLS.map((bowl) => (
+          {bowls.map((bowl) => (
             <div key={bowl.name} className="bg-[#2C231D] border border-[#3D3229] overflow-hidden group">
               <div className="relative aspect-square overflow-hidden">
                 <Image
-                  src={bowl.image}
-                  alt={bowl.alt}
+                  src={bowl.image_url || bowl.image_local_path || "/images/brand/signature_bowl.png"}
+                  alt={bowl.alt_text || bowl.image_alt_text || bowl.name}
                   fill
                   className="object-cover group-hover:scale-105 transition-transform duration-500"
                   quality={85}
                 />
-                {bowl.tag && (
+                {bowl.badge_label && (
                   <span className="absolute top-3 left-3 bg-[#C8892A] text-[#1A1714] text-xs font-semibold px-2 py-1">
-                    {bowl.tag}
+                    {bowl.badge_label}
                   </span>
                 )}
               </div>
               <div className="p-5">
                 <div className="flex items-start justify-between mb-2">
                   <h3 className="font-display text-xl font-semibold text-[#F0EBE3]">{bowl.name}</h3>
-                  <span className="font-sans font-semibold text-[#C8892A] ml-2 shrink-0">{bowl.price}</span>
+                  {bowl.price && (
+                    <span className="font-sans font-semibold text-[#C8892A] ml-2 shrink-0">{bowl.price}</span>
+                  )}
                 </div>
                 <p className="text-sm text-[#A09488] leading-relaxed">{bowl.description}</p>
               </div>

@@ -75,6 +75,7 @@ export default function MenuNav({ categories }: MenuNavProps) {
               key={cat.slug}
               type="button"
               onClick={() => scrollTo(cat.slug)}
+              style={{ touchAction: "manipulation" }}
               className={`px-4 py-1.5 text-sm font-sans font-medium tracking-wide transition-all whitespace-nowrap ${
                 active === cat.slug
                   ? "bg-[#C8892A] text-[#1A1714]"

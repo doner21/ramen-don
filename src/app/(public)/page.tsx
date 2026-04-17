@@ -3,7 +3,7 @@ import MenuHighlights from "@/components/sections/MenuHighlights";
 import Story from "@/components/sections/Story";
 import BookingCTA from "@/components/opentable/BookingCTA";
 import VisitInfo from "@/components/sections/VisitInfo";
-import { getHomepageSections, getOpeningHours, getHeroImage, getVenueDetails } from "@/lib/data/fetchers";
+import { getHomepageSections, getOpeningHours, getHeroImage, getVenueDetails, getSignatureBowls } from "@/lib/data/fetchers";
 
 export const metadata = {
   title: "Ramen Don Birmingham — Authentic Japanese Ramen",
@@ -12,11 +12,12 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [sections, hours, heroImage, venue] = await Promise.all([
+  const [sections, hours, heroImage, venue, bowls] = await Promise.all([
     getHomepageSections(),
     getOpeningHours(),
     getHeroImage(),
     getVenueDetails(),
+    getSignatureBowls(),
   ]);
 
   const heroSection = sections.find((s) => s.slug === "hero");
@@ -27,7 +28,7 @@ export default async function HomePage() {
   return (
     <>
       {heroSection && <Hero section={heroSection} heroImage={heroImage} />}
-      <MenuHighlights section={signatureSection} />
+      <MenuHighlights section={signatureSection} bowls={bowls} />
       <Story section={storySection} />
       <BookingCTA
         heading={ctaSection?.heading || "Book Your Table"}

@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { href: "/admin/hours", label: "Opening Hours", icon: "◷" },
   { href: "/admin/venue", label: "Venue Details", icon: "◎" },
   { href: "/admin/menu", label: "Menu", icon: "◻" },
+  { href: "/admin/signature-bowls", label: "Signature Bowls", icon: "◉" },
   { href: "/admin/gallery", label: "Gallery", icon: "◫" },
   { href: "/admin/homepage", label: "Homepage", icon: "◱" },
 ];

@@ -98,6 +98,7 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
             className="lg:hidden p-2 text-[#F0EBE3] cursor-pointer"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label="Toggle navigation"
+            style={{ touchAction: "manipulation" }}
           >
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               {menuOpen ? (
@@ -128,7 +129,6 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
               <button
                 type="button"
                 className="mt-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-3 text-center hover:bg-[#d9992f] transition-colors w-full"
-                onClick={() => setMenuOpen(false)}
               >
                 Book a Table
               </button>

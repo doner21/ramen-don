@@ -5,6 +5,7 @@ import type {
   MenuItem,
   GalleryImage,
   HomepageSection,
+  SignatureBowl,
 } from "./types";
 
 export const VENUE_DETAILS: VenueDetails = {
@@ -374,6 +375,49 @@ export const GALLERY_IMAGES: GalleryImage[] = [
     alt_text: "Candlelit atmospheric ramen restaurant interior",
     local_path: "/images/brand/hero_Hawksmoor_ramen.png",
     sort_order: 7,
+  },
+];
+
+export const SIGNATURE_BOWLS: SignatureBowl[] = [
+  {
+    name: "Kotteri Pork",
+    description: "Pork bone broth, Chashu pork belly, House menma, Hanjuku egg",
+    price: "£16",
+    badge_label: null,
+    image_local_path: "/images/brand/signature_bowl.png",
+    alt_text: "Kotteri pork ramen in dark ceramic bowl",
+    sort_order: 1,
+    is_visible: true,
+  },
+  {
+    name: "Kara Miso",
+    description: "Spicy miso tare, Kimchi, Sweetcorn, Shichimi togarashi",
+    price: "£16",
+    badge_label: "🌶 Spicy",
+    image_local_path: "/images/brand/spicy_fire.png",
+    alt_text: "Spicy kara miso ramen",
+    sort_order: 2,
+    is_visible: true,
+  },
+  {
+    name: "Shoyu Ramen",
+    description: "Sweet soy chicken, Hanjuku egg, Spring onion, Nori",
+    price: "£16",
+    badge_label: null,
+    image_local_path: "/images/brand/shoyu_essence.png",
+    alt_text: "Shoyu ramen overhead",
+    sort_order: 3,
+    is_visible: true,
+  },
+  {
+    name: "Kishu Ramen",
+    description: "Pink duck, House menma, Hanjuku egg, Spring onion",
+    price: "£18.95",
+    badge_label: "Chef's Pick",
+    image_local_path: "/images/brand/truffle_shio.png",
+    alt_text: "Premium Kishu ramen",
+    sort_order: 4,
+    is_visible: true,
   },
 ];
 
