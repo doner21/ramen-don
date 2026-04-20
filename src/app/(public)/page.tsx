@@ -3,7 +3,8 @@ import MenuHighlights from "@/components/sections/MenuHighlights";
 import Story from "@/components/sections/Story";
 import BookingCTA from "@/components/opentable/BookingCTA";
 import VisitInfo from "@/components/sections/VisitInfo";
-import { getHomepageSections, getOpeningHours, getHeroImage, getVenueDetails, getSignatureBowls } from "@/lib/data/fetchers";
+import { getHomepageSections, getOpeningHours, getHeroImage, getVenueDetails, getSignatureBowls, getBookingOverlayImage } from "@/lib/data/fetchers";
+import { BOOKING_OVERLAY_FALLBACK_IMAGE, BOOKING_OVERLAY_FALLBACK_ALT } from "@/lib/data/constants";
 
 export const metadata = {
   title: "Ramen Don Birmingham — Authentic Japanese Ramen",
@@ -12,13 +13,21 @@ export const metadata = {
 };
 
 export default async function HomePage() {
-  const [sections, hours, heroImage, venue, bowls] = await Promise.all([
+  const [sections, hours, heroImage, venue, bowls, rawOverlayImage] = await Promise.all([
     getHomepageSections(),
     getOpeningHours(),
     getHeroImage(),
     getVenueDetails(),
     getSignatureBowls(),
+    getBookingOverlayImage(),
   ]);
+
+  const overlayImage = rawOverlayImage
+    ? {
+        src: rawOverlayImage.storage_url || rawOverlayImage.local_path || BOOKING_OVERLAY_FALLBACK_IMAGE,
+        alt: rawOverlayImage.alt_text || BOOKING_OVERLAY_FALLBACK_ALT,
+      }
+    : null;
 
   const heroSection = sections.find((s) => s.slug === "hero");
   const storySection = sections.find((s) => s.slug === "story");
@@ -27,7 +36,7 @@ export default async function HomePage() {
 
   return (
     <>
-      {heroSection && <Hero section={heroSection} heroImage={heroImage} />}
+      {heroSection && <Hero section={heroSection} heroImage={heroImage} overlayImage={overlayImage} />}
       <MenuHighlights section={signatureSection} bowls={bowls} />
       <Story section={storySection} />
       <BookingCTA
@@ -35,8 +44,9 @@ export default async function HomePage() {
         subtext={ctaSection?.subheading || "Reserve online in seconds — no deposit required."}
         body={ctaSection?.body}
         ctaUrl={ctaSection?.cta_url}
+        overlayImage={overlayImage}
       />
-      <VisitInfo hours={hours} venue={venue} />
+      <VisitInfo hours={hours} venue={venue} overlayImage={overlayImage} />
 
       {/* Instagram teaser */}
       <section className="py-16 px-4 bg-[#2C231D] text-center">

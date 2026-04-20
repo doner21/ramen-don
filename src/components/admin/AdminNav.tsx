@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { href: "/admin/menu", label: "Menu", icon: "◻" },
   { href: "/admin/signature-bowls", label: "Signature Bowls", icon: "◉" },
   { href: "/admin/gallery", label: "Gallery", icon: "◫" },
+  { href: "/admin/overlay-image", label: "Booking Image", icon: "◇" },
   { href: "/admin/homepage", label: "Homepage", icon: "◱" },
 ];
 

@@ -20,9 +20,10 @@ const NAV_LINKS = [
 
 interface HeaderProps {
   openTableUrl?: string;
+  overlayImage?: { src: string; alt: string } | null;
 }
 
-export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham" }: HeaderProps = {}) {
+export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham", overlayImage }: HeaderProps = {}) {
   const [menuOpen, setMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -82,7 +83,7 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex">
-            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL} overlayImage={overlayImage}>
               <button
                 type="button"
                 className="bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-2.5 hover:bg-[#d9992f] transition-colors"
@@ -125,7 +126,7 @@ export default function Header({ openTableUrl = "https://www.opentable.co.uk/r/r
                 {link.label}
               </Link>
             ))}
-            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+            <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL} overlayImage={overlayImage}>
               <button
                 type="button"
                 className="mt-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold text-sm tracking-wide px-5 py-3 text-center hover:bg-[#d9992f] transition-colors w-full"

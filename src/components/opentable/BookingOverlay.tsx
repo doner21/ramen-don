@@ -2,17 +2,23 @@
 
 import { useState, useEffect, useCallback, useRef } from "react";
 import { createPortal } from "react-dom";
+import Image from "next/image";
 import type { ReactNode } from "react";
+import { BOOKING_OVERLAY_FALLBACK_IMAGE, BOOKING_OVERLAY_FALLBACK_ALT } from "@/lib/data/constants";
 
 interface BookingOverlayProps {
   widgetUrl: string;
+  overlayImage?: { src: string; alt: string } | null;
   children: ReactNode;
 }
 
-export default function BookingOverlay({ widgetUrl, children }: BookingOverlayProps) {
+export default function BookingOverlay({ widgetUrl, overlayImage, children }: BookingOverlayProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const scrollYRef = useRef(0);
+
+  const imageSrc = overlayImage?.src || BOOKING_OVERLAY_FALLBACK_IMAGE;
+  const imageAlt = overlayImage?.alt || BOOKING_OVERLAY_FALLBACK_ALT;
 
   useEffect(() => {
     setMounted(true);
@@ -137,30 +143,50 @@ export default function BookingOverlay({ widgetUrl, children }: BookingOverlayPr
             aria-label="Book a Table"
             onClick={close}
           >
-            {/* Panel — stops click propagation so backdrop-click-to-close works correctly */}
+            {/* Panel — full-bleed image background with centered floating widget */}
             <div
-              className="relative w-full max-w-2xl mx-4 h-[90vh] bg-[#1A1714] border border-[#3D3229] overflow-hidden flex flex-col"
+              className="relative w-full max-w-4xl mx-4 bg-[#1A1714] border border-[#3D3229] rounded-lg overflow-hidden"
+              style={{ height: "min(90vh, 620px)" }}
               onClick={(e) => e.stopPropagation()}
             >
-              {/* Close button */}
+              {/* Full-bleed background image */}
+              <Image
+                src={imageSrc}
+                alt={imageAlt}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 896px, 100vw"
+                priority={false}
+              />
+
+              {/* Subtle scrim — darkens the image slightly for widget legibility, NOT fully opaque */}
+              <div className="absolute inset-0 bg-black/40 pointer-events-none" />
+
+              {/* Close button — z-20 so it sits above scrim and widget card */}
               <button
                 type="button"
                 onClick={close}
                 aria-label="Close booking overlay"
                 data-testid="booking-overlay-close"
-                className="absolute top-3 right-3 z-10 p-2 text-[#A09488] hover:text-[#F0EBE3] transition-colors bg-[#1A1714]/80 rounded"
+                className="absolute top-3 right-3 z-20 p-2 text-[#A09488] hover:text-[#F0EBE3] transition-colors bg-[#1A1714]/80 rounded"
               >
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
 
-              {/* Widget inline holder — OpenTable script injects HTML here */}
-              <div
-                id="ot-widget-holder"
-                data-testid="booking-overlay-widget"
-                className="w-full flex-1 overflow-hidden"
-              />
+              {/* Centered widget wrapper — sits above scrim, centers the widget card */}
+              <div className="absolute inset-0 z-10 flex items-center justify-center p-4 md:p-6">
+                {/* Widget card — semi-transparent dark panel for readability */}
+                <div className="bg-[#1A1714]/85 backdrop-blur-sm border border-[#3D3229] rounded-lg p-4 md:p-6 max-w-full">
+                  {/* Widget inline holder — OpenTable script injects HTML here */}
+                  <div
+                    id="ot-widget-holder"
+                    data-testid="booking-overlay-widget"
+                    className="overflow-auto"
+                  />
+                </div>
+              </div>
             </div>
           </div>,
           document.body

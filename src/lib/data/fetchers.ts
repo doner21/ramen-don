@@ -133,6 +133,28 @@ export async function getSignatureBowls(): Promise<SignatureBowl[]> {
   }
 }
 
+export async function getBookingOverlayImage(): Promise<GalleryImage | null> {
+  if (!isSupabaseConfigured()) return null;
+  try {
+    const supabase = await createSupabaseServerClient();
+    const { data: setting } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", "booking_overlay_image_id")
+      .maybeSingle();
+    if (!setting?.value) return null;
+    const { data: image, error } = await supabase
+      .from("gallery_images")
+      .select("*")
+      .eq("id", setting.value)
+      .maybeSingle();
+    if (error || !image) return null;
+    return image as GalleryImage;
+  } catch {
+    return null;
+  }
+}
+
 export async function getHomepageSections(): Promise<HomepageSection[]> {
   if (!isSupabaseConfigured()) return HOMEPAGE_SECTIONS;
   try {

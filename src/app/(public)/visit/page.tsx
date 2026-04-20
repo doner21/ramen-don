@@ -1,5 +1,6 @@
 import BookingCTA from "@/components/opentable/BookingCTA";
-import { getOpeningHours, getVenueDetails } from "@/lib/data/fetchers";
+import { getOpeningHours, getVenueDetails, getBookingOverlayImage } from "@/lib/data/fetchers";
+import { BOOKING_OVERLAY_FALLBACK_IMAGE, BOOKING_OVERLAY_FALLBACK_ALT } from "@/lib/data/constants";
 
 export const metadata = {
   title: "Visit Us — Ramen Don Birmingham",
@@ -8,7 +9,18 @@ export const metadata = {
 };
 
 export default async function VisitPage() {
-  const [hours, venue] = await Promise.all([getOpeningHours(), getVenueDetails()]);
+  const [hours, venue, rawOverlayImage] = await Promise.all([
+    getOpeningHours(),
+    getVenueDetails(),
+    getBookingOverlayImage(),
+  ]);
+
+  const overlayImage = rawOverlayImage
+    ? {
+        src: rawOverlayImage.storage_url || rawOverlayImage.local_path || BOOKING_OVERLAY_FALLBACK_IMAGE,
+        alt: rawOverlayImage.alt_text || BOOKING_OVERLAY_FALLBACK_ALT,
+      }
+    : null;
 
   return (
     <>
@@ -88,7 +100,7 @@ export default async function VisitPage() {
         </div>
       </div>
 
-      <BookingCTA heading="Plan Your Visit" subtext="Book ahead to guarantee your table." ctaUrl={venue.opentable_url} />
+      <BookingCTA heading="Plan Your Visit" subtext="Book ahead to guarantee your table." ctaUrl={venue.opentable_url} overlayImage={overlayImage} />
     </>
   );
 }

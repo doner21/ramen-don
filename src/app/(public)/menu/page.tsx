@@ -1,7 +1,8 @@
-import { getMenuCategories } from "@/lib/data/fetchers";
+import { getMenuCategories, getBookingOverlayImage } from "@/lib/data/fetchers";
 import MenuCategory from "@/components/menu/MenuCategory";
 import MenuNav from "@/components/menu/MenuNav";
 import BookingCTA from "@/components/opentable/BookingCTA";
+import { BOOKING_OVERLAY_FALLBACK_IMAGE, BOOKING_OVERLAY_FALLBACK_ALT } from "@/lib/data/constants";
 
 export const metadata = {
   title: "Menu — Ramen Don Birmingham",
@@ -10,7 +11,17 @@ export const metadata = {
 };
 
 export default async function MenuPage() {
-  const categories = await getMenuCategories();
+  const [categories, rawOverlayImage] = await Promise.all([
+    getMenuCategories(),
+    getBookingOverlayImage(),
+  ]);
+
+  const overlayImage = rawOverlayImage
+    ? {
+        src: rawOverlayImage.storage_url || rawOverlayImage.local_path || BOOKING_OVERLAY_FALLBACK_IMAGE,
+        alt: rawOverlayImage.alt_text || BOOKING_OVERLAY_FALLBACK_ALT,
+      }
+    : null;
 
   return (
     <>
@@ -33,7 +44,7 @@ export default async function MenuPage() {
         ))}
       </div>
 
-      <BookingCTA heading="Enjoyed the Menu?" subtext="Reserve your table and experience it in person." />
+      <BookingCTA heading="Enjoyed the Menu?" subtext="Reserve your table and experience it in person." overlayImage={overlayImage} />
     </>
   );
 }

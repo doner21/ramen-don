@@ -12,6 +12,7 @@ interface BookingCTAProps {
   body?: string;
   className?: string;
   ctaUrl?: string;
+  overlayImage?: { src: string; alt: string } | null;
 }
 
 export default function BookingCTA({
@@ -20,6 +21,7 @@ export default function BookingCTA({
   body,
   className = "",
   ctaUrl: _ctaUrl = "https://www.opentable.co.uk/r/ramen-don-birmingham",
+  overlayImage,
 }: BookingCTAProps) {
   return (
     <section className={`bg-[#2C231D] border-y border-[#3D3229] py-16 px-4 text-center ${className}`}>
@@ -35,7 +37,7 @@ export default function BookingCTA({
         </p>
       )}
       <p className="text-[#A09488] text-base mb-8 max-w-md mx-auto">{subtext}</p>
-      <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL}>
+      <BookingOverlay widgetUrl={OPENTABLE_WIDGET_URL} overlayImage={overlayImage}>
         <button
           type="button"
           className="inline-flex items-center gap-2 bg-[#C8892A] text-[#1A1714] font-sans font-semibold px-8 py-3 hover:bg-[#d9992f] transition-colors"

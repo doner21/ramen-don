@@ -6,9 +6,10 @@ import HeroBookingButton from "@/components/sections/HeroBookingButton";
 interface HeroProps {
   section?: HomepageSection;
   heroImage?: GalleryImage | null;
+  overlayImage?: { src: string; alt: string } | null;
 }
 
-export default function Hero({ section, heroImage }: HeroProps = {}) {
+export default function Hero({ section, heroImage, overlayImage }: HeroProps = {}) {
   const tagline = section?.subheading ?? "Handcrafted broths. Bold flavours.";
   const FALLBACK_IMAGE = "/images/brand/hero_ramen.png";
   const heroSrc = heroImage?.storage_url || heroImage?.local_path || FALLBACK_IMAGE;
@@ -57,7 +58,7 @@ export default function Hero({ section, heroImage }: HeroProps = {}) {
           </p>
         )}
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-          <HeroBookingButton />
+          <HeroBookingButton overlayImage={overlayImage} />
           <a
             href="/menu"
             className="border border-[#F0EBE3]/40 text-[#F0EBE3] font-sans px-8 py-3.5 hover:border-[#C8892A] hover:text-[#C8892A] transition-colors tracking-wide"

@@ -1,5 +1,6 @@
 import BookingCTA from "@/components/opentable/BookingCTA";
-import { getOpeningHours } from "@/lib/data/fetchers";
+import { getOpeningHours, getBookingOverlayImage } from "@/lib/data/fetchers";
+import { BOOKING_OVERLAY_FALLBACK_IMAGE, BOOKING_OVERLAY_FALLBACK_ALT } from "@/lib/data/constants";
 
 const INSTAGRAM_URL = "https://www.instagram.com/ramen_don_/";
 
@@ -10,7 +11,17 @@ export const metadata = {
 };
 
 export default async function ContactPage() {
-  const hours = await getOpeningHours();
+  const [hours, rawOverlayImage] = await Promise.all([
+    getOpeningHours(),
+    getBookingOverlayImage(),
+  ]);
+
+  const overlayImage = rawOverlayImage
+    ? {
+        src: rawOverlayImage.storage_url || rawOverlayImage.local_path || BOOKING_OVERLAY_FALLBACK_IMAGE,
+        alt: rawOverlayImage.alt_text || BOOKING_OVERLAY_FALLBACK_ALT,
+      }
+    : null;
   return (
     <>
       {/* Header */}
@@ -92,7 +103,7 @@ export default async function ContactPage() {
         </div>
       </div>
 
-      <BookingCTA heading="Ready to Join Us?" subtext="Reserve your table at Ramen Don Birmingham." />
+      <BookingCTA heading="Ready to Join Us?" subtext="Reserve your table at Ramen Don Birmingham." overlayImage={overlayImage} />
     </>
   );
 }

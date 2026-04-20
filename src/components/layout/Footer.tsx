@@ -12,7 +12,11 @@ const NAV_LINKS = [
   { href: "/contact", label: "Contact" },
 ];
 
-export default async function Footer() {
+interface FooterProps {
+  overlayImage?: { src: string; alt: string } | null;
+}
+
+export default async function Footer({ overlayImage }: FooterProps = {}) {
   const hours = await getOpeningHours();
   const venue = await getVenueDetails();
   const year = new Date().getFullYear();
@@ -92,7 +96,7 @@ export default async function Footer() {
                 </p>
               ))}
             </div>
-            <FooterBookingButton />
+            <FooterBookingButton overlayImage={overlayImage} />
           </div>
         </div>
 

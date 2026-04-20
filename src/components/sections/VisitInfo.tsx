@@ -4,9 +4,10 @@ import VisitInfoBookingButton from "@/components/sections/VisitInfoBookingButton
 interface VisitInfoProps {
   hours?: OpeningHour[];
   venue?: VenueDetails;
+  overlayImage?: { src: string; alt: string } | null;
 }
 
-export default function VisitInfo({ hours, venue }: VisitInfoProps = {}) {
+export default function VisitInfo({ hours, venue, overlayImage }: VisitInfoProps = {}) {
   const openTableUrl = venue?.opentable_url ?? "https://www.opentable.co.uk/r/ramen-don-birmingham";
   const addressLine1 = venue?.address_line1 ?? "Unit 1A Regency Wharf";
   const phone = venue?.phone ?? "0121 714 5565";
@@ -68,7 +69,7 @@ export default function VisitInfo({ hours, venue }: VisitInfoProps = {}) {
             <p className="text-sm text-[#A09488] mb-5">
               Book your table online via OpenTable — no deposit required.
             </p>
-            <VisitInfoBookingButton />
+            <VisitInfoBookingButton overlayImage={overlayImage} />
           </div>
         </div>
       </div>
