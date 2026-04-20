@@ -39,3 +39,15 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# nenflow / agent runtime artifacts
+/.nenflow_context_health.json
+/nenflow_v3/runs/
+/nenflow_v3/templates/
+/nenflow_v3/validator.js
+
+# playwright MCP dev artifacts
+/.playwright-mcp/
+
+# repo-root screenshot dumps (anchored — does not affect public/images/**)
+/*.png
